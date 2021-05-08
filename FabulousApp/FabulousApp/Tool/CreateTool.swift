@@ -73,6 +73,7 @@ class CreateTool {
         if let backgroundView = backgroundView {
             tableView.backgroundView = backgroundView
         }
+        tableView.contentInsetAdjustmentBehavior = .never//从状态栏顶部开始布局
         tableView.dataSource = dataSource
         tableView.delegate = delegate
         tableView.showsVerticalScrollIndicator = false

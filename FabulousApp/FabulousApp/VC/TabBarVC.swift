@@ -44,6 +44,8 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        let itemIndex = tabBar.items!.firstIndex(of: item)
+        guard itemIndex != 2 else { return } //点击中间忽略
         selectedIndex = tabBar.items!.firstIndex(of: item)!
         selectedTabbarButton.layer.add(bounceAnimation, forKey: nil)
         
@@ -52,7 +54,7 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     
     //MARK: - Method
     func navWith(vc: UIViewController, title: String, image: UIImage, selectedImage: UIImage) -> UINavigationController {
-        let nav = UINavigationController(rootViewController: vc)
+        let nav = NavigationVC(rootViewController: vc)
         let item = UITabBarItem(title:title,
                                image:image.withRenderingMode(.alwaysOriginal),
                                selectedImage:selectedImage.withRenderingMode(.alwaysOriginal))
@@ -72,7 +74,7 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     
     lazy var messageNav = navWith(vc: ViewController(), title: "消息", image: #imageLiteral(resourceName: "tabbar_icon_msg"), selectedImage: #imageLiteral(resourceName: "tabbar_icon_msgsel"))
     
-    lazy var mineNav = navWith(vc: ViewController(), title: "我的", image: #imageLiteral(resourceName: "tabbar_icon_mine"), selectedImage: #imageLiteral(resourceName: "tabbar_icon_minesel"))
+    lazy var mineNav = navWith(vc: MineVC(), title: "我的", image: #imageLiteral(resourceName: "tabbar_icon_mine"), selectedImage: #imageLiteral(resourceName: "tabbar_icon_minesel"))
     
     lazy var publishImageView = CreateTool.imageViewWith(image: #imageLiteral(resourceName: "tabbar_icon_addbg"),contentMode: .center) //为了适配选择center
     
@@ -101,8 +103,7 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         }
         return tabBarButtonArray[selectedIndex]
     }
-    
-    
+        
 }
 
 

@@ -26,7 +26,7 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
          小知识：
          UITabBarController有N个子控制器,其UITabBar内部就会有N个UITabBarButton与之对应
          UITabBarButton在UITabBar中的位置是均分的，UITabBarButton的高度恒为48(UITabBar的高度)
-         UITabBarButton类是无法直接获得的，它⾥面的内容由对应子控制器的UITabBarItem来决定
+         UITabBarButton类是UIView，但无法直接获得。它⾥面的内容由对应子控制器的UITabBarItem来设定(它不是UIView)
          */
         //图片设计尺寸为UITabBarButton宽度，UITabBarButton的高度+13.5，因此y要设置为-13.5
         let buttonWidth = UIScreen.main.bounds.width / CGFloat(viewControllers!.count)
@@ -44,8 +44,8 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        let selectedIndex = tabBar.items!.firstIndex(of: item)!
-        ani(selectedIndex)
+        selectedIndex = tabBar.items!.firstIndex(of: item)!
+        selectedTabbarButton.layer.add(bounceAnimation, forKey: nil)
         
 
     }
@@ -63,16 +63,6 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         return nav
     }
     
-    func ani(_ selectedIndex: Int) {
-        var tabBarButtonArray = [UIView]()
-        for item in tabBar.subviews {
-            if item.isKind(of: NSClassFromString("UITabBarButton")!) {
-                tabBarButtonArray.append(item)
-            }
-        }
-        tabBarButtonArray[selectedIndex].layer.add(BOUNCE_ANIMATION, forKey: nil)
-    }
-    
     //MARK: - Component    
     lazy var discoverNav = navWith(vc: ViewController(), title: "发现", image: #imageLiteral(resourceName: "tabbar_icon_find"), selectedImage: #imageLiteral(resourceName: "tabbar_icon_findsel"))
     
@@ -86,8 +76,7 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     
     lazy var publishImageView = CreateTool.imageViewWith(image: #imageLiteral(resourceName: "tabbar_icon_addbg"),contentMode: .center) //为了适配选择center
     
-    //MARK: - Data
-    let BOUNCE_ANIMATION: CAKeyframeAnimation = {
+    let bounceAnimation: CAKeyframeAnimation = {
         let animation = CAKeyframeAnimation.init(keyPath: "transform")
         animation.timingFunction = CAMediaTimingFunction(name: .linear)
         animation.duration = 0.3
@@ -100,6 +89,19 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
         animation.values = values
         return animation
     }()
+    
+    //MARK: - Data
+    var selectedTabbarButton: UIView {
+        //获取UITabBarButton的方法
+        var tabBarButtonArray = [UIView]()
+        for item in tabBar.subviews {
+            if item.isKind(of: NSClassFromString("UITabBarButton")!) {
+                tabBarButtonArray.append(item)
+            }
+        }
+        return tabBarButtonArray[selectedIndex]
+    }
+    
     
 }
 

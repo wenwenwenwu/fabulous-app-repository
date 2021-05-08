@@ -253,7 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				5B034FFF264630E40005ECFC /* WebTool.swift */,
-				5B034F9E264630630005ECFC /* Store.swift */,
 				5B035070264634270005ECFC /* Model */,
 			);
 			path = WebTool;
@@ -276,6 +275,7 @@
 				5B0350742646381C0005ECFC /* MainVC.swift */,
 				5B035086264647760005ECFC /* TabBarVC.swift */,
 				5B0350752646381D0005ECFC /* NavigationVC.swift */,
+				5BA8F7092646234800AE46ED /* ViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -345,7 +345,7 @@
 				5BA8F7072646234800AE46ED /* SceneDelegate.swift */,
 				5B034F9C264630630005ECFC /* Configuration.swift */,
 				5B034F9D264630630005ECFC /* Constant.swift */,
-				5BA8F7092646234800AE46ED /* ViewController.swift */,
+				5B034F9E264630630005ECFC /* Store.swift */,
 				5B034FA2264630E30005ECFC /* Model */,
 				5B03506F264633EF0005ECFC /* VC */,
 				5B034FF8264630E40005ECFC /* Tool */,

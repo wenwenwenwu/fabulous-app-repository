@@ -12,7 +12,7 @@ import SnapKit
 //MARK: - 全局对象常量
 let APP_DELEGATE = UIApplication.shared.delegate as! AppDelegate
 let KEY_WINDOW = UIApplication.shared.windows.first(where: { $0.isKeyWindow })!
-let MAIN_VC = ViewController()
+let MAIN_VC = TabBarVC()
 
 //MARK: - 尺寸常量
 let SCREEN_BOUNDS: CGRect = UIScreen.main.bounds

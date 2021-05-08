@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension WebTool {
+struct Store {
     
     
 }

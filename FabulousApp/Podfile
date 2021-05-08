@@ -1,0 +1,28 @@
+source 'https://github.com/CocoaPods/Specs.git’
+platform :ios, ’12.0'
+
+target 'FabulousApp' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for FabulousApp
+    #Swift必装
+    pod 'SnapKit'
+    pod 'IQKeyboardManagerSwift'
+    pod 'Kingfisher', '~> 6.0'
+    pod 'Alamofire', '~> 5.2'
+    #Objective-C必装
+    pod 'MBProgressHUD'
+    pod 'FDFullscreenPopGesture'
+  
+
+  target 'FabulousAppTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'FabulousAppUITests' do
+    # Pods for testing
+  end
+
+end

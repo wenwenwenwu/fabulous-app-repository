@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-let BASE_URL = (IS_DISTRIBUTION) ? "http://47.98.205.142:9510" : "http://47.98.205.142:9510"
+let BASE_URL = (IS_DISTRIBUTION) ? "https://api.apuxiao.com/pig/v1/cms/" : "https://api.apuxiao.com/pig/v1/cms/"
 
 class WebTool {
     
@@ -90,7 +90,7 @@ class WebTool {
                 let decoder = JSONDecoder()
                 let baseInfoModel = try decoder.decode(ResponseInfoModel.self, from: response.data!)
                 switch baseInfoModel.code {
-                case 0:
+                case 1:
                     if debug { debugPrint(response)}
                     let baseDataModel = try decoder.decode(ResponseDataModel<ResponseModel>.self, from: response.data!)
                     completion(Result.success(baseDataModel.data))

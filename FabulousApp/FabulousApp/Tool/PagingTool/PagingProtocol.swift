@@ -8,6 +8,6 @@
 import Foundation
 
 protocol Paging: Codable {
-    var page: Int { get set } //由pagingTool对象设置并提交后台
+    var pageNum: String { get set } //由pagingTool对象设置并提交后台
 }
 

@@ -9,9 +9,10 @@ import Foundation
 
 struct RawPagingResponseModel<T: Codable>: Codable {
     
-    var data:[T]
-    var last_page: Int //总页数
-    var current_page: Int //当前页数
-    var total: Int //总条数
+    var records:[T]
+    var total: String //总条数
+    var size: String //每页
+    var current: String //当前页数
+    var pages: String //总页数
     
 }

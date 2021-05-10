@@ -41,6 +41,9 @@
 		5B035087264647760005ECFC /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B035086264647760005ECFC /* TabBarVC.swift */; };
 		5B035089264657170005ECFC /* MineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B035088264657170005ECFC /* MineVC.swift */; };
 		5B03508B264658B50005ECFC /* ZoomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B03508A264658B50005ECFC /* ZoomHeader.swift */; };
+		5B32F2902648C8D400E4D367 /* MomentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F28F2648C8D400E4D367 /* MomentModel.swift */; };
+		5B32F2922648CCA600E4D367 /* MomentParaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F2912648CCA600E4D367 /* MomentParaModel.swift */; };
+		5B32F2962648D15400E4D367 /* MomentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F2952648D15400E4D367 /* MomentListVC.swift */; };
 		5BA8F7062646234800AE46ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F7052646234800AE46ED /* AppDelegate.swift */; };
 		5BA8F7082646234800AE46ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F7072646234800AE46ED /* SceneDelegate.swift */; };
 		5BA8F70A2646234800AE46ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F7092646234800AE46ED /* ViewController.swift */; };
@@ -109,6 +112,9 @@
 		5B035086264647760005ECFC /* TabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		5B035088264657170005ECFC /* MineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineVC.swift; sourceTree = "<group>"; };
 		5B03508A264658B50005ECFC /* ZoomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomHeader.swift; sourceTree = "<group>"; };
+		5B32F28F2648C8D400E4D367 /* MomentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentModel.swift; sourceTree = "<group>"; };
+		5B32F2912648CCA600E4D367 /* MomentParaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentParaModel.swift; sourceTree = "<group>"; };
+		5B32F2952648D15400E4D367 /* MomentListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentListVC.swift; sourceTree = "<group>"; };
 		5BA8F7022646234800AE46ED /* FabulousApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FabulousApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA8F7052646234800AE46ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BA8F7072646234800AE46ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -212,6 +218,7 @@
 		5B034FBA264630E30005ECFC /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				5B32F2912648CCA600E4D367 /* MomentParaModel.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -219,6 +226,7 @@
 		5B034FD5264630E30005ECFC /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
+				5B32F28F2648C8D400E4D367 /* MomentModel.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -276,12 +284,12 @@
 		5B03506F264633EF0005ECFC /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				5B32F2942648D14300E4D367 /* 发现 */,
+				5B32F2932648D12900E4D367 /* 我的 */,
 				5B0350742646381C0005ECFC /* MainVC.swift */,
 				5B035086264647760005ECFC /* TabBarVC.swift */,
 				5B0350752646381D0005ECFC /* NavigationVC.swift */,
 				5BA8F7092646234800AE46ED /* ViewController.swift */,
-				5B035088264657170005ECFC /* MineVC.swift */,
-				5B03508A264658B50005ECFC /* ZoomHeader.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -320,6 +328,23 @@
 			children = (
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		5B32F2932648D12900E4D367 /* 我的 */ = {
+			isa = PBXGroup;
+			children = (
+				5B035088264657170005ECFC /* MineVC.swift */,
+				5B03508A264658B50005ECFC /* ZoomHeader.swift */,
+			);
+			path = "我的";
+			sourceTree = "<group>";
+		};
+		5B32F2942648D14300E4D367 /* 发现 */ = {
+			isa = PBXGroup;
+			children = (
+				5B32F2952648D15400E4D367 /* MomentListVC.swift */,
+			);
+			path = "发现";
 			sourceTree = "<group>";
 		};
 		5BA8F6F92646234800AE46ED = {
@@ -632,6 +657,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B03505B264630E40005ECFC /* UIButton.swift in Sources */,
+				5B32F2902648C8D400E4D367 /* MomentModel.swift in Sources */,
 				5B03505F264630E40005ECFC /* ResponseInfoModel.swift in Sources */,
 				5BA8F70A2646234800AE46ED /* ViewController.swift in Sources */,
 				5B035062264630E40005ECFC /* WebTool.swift in Sources */,
@@ -641,6 +667,7 @@
 				5B03502F264630E40005ECFC /* BlankRequestModel.swift in Sources */,
 				5B03506B264630E40005ECFC /* CreateTool.swift in Sources */,
 				5B03505A264630E40005ECFC /* String.swift in Sources */,
+				5B32F2922648CCA600E4D367 /* MomentParaModel.swift in Sources */,
 				5BA8F7062646234800AE46ED /* AppDelegate.swift in Sources */,
 				5B03505C264630E40005ECFC /* UIViewController.swift in Sources */,
 				5B03506A264630E40005ECFC /* CommonTool.swift in Sources */,
@@ -664,6 +691,7 @@
 				5B035065264630E40005ECFC /* PagingTool.swift in Sources */,
 				5B035061264630E40005ECFC /* ResponseDataModel.swift in Sources */,
 				5B035089264657170005ECFC /* MineVC.swift in Sources */,
+				5B32F2962648D15400E4D367 /* MomentListVC.swift in Sources */,
 				5BA8F7082646234800AE46ED /* SceneDelegate.swift in Sources */,
 				5B03505D264630E40005ECFC /* HudTool.swift in Sources */,
 				5B035073264634D30005ECFC /* PagingProtocol.swift in Sources */,

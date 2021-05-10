@@ -66,7 +66,7 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     }
     
     //MARK: - Component    
-    lazy var discoverNav = navWith(vc: ViewController(), title: "发现", image: #imageLiteral(resourceName: "tabbar_icon_find"), selectedImage: #imageLiteral(resourceName: "tabbar_icon_findsel"))
+    lazy var discoverNav = navWith(vc: MomentListVC(), title: "发现", image: #imageLiteral(resourceName: "tabbar_icon_find"), selectedImage: #imageLiteral(resourceName: "tabbar_icon_findsel"))
     
     lazy var liveNav = navWith(vc: ViewController(), title: "直播", image: #imageLiteral(resourceName: "tabbar_icon_room"), selectedImage: #imageLiteral(resourceName: "tabbar_icon_roomsel"))
     

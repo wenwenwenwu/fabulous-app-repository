@@ -18,12 +18,9 @@ class WebTool {
         HudTool.showHud()
         //请求
         var headers: HTTPHeaders?
-        if AccountTool.isLogin {
-            headers = [
-                "token":AccountTool.loginInfo!.token,
-                "uid":"\(AccountTool.loginInfo!.uid)"
-            ]
-        }
+        headers = [
+            "t-token":"6113705e8c81e65f648dadd4cf2c9ebd",
+        ]
         AF.request(BASE_URL + uri,
                    method: httpMethod,
                    parameters: paraModel,

@@ -21,11 +21,15 @@ class ZoomHeader: UIView {
     }
     
     //MARK: - Component
-    lazy var backImageView = CreateTool.imageViewWith(image: #imageLiteral(resourceName: "test"))
+    lazy var backImageView = CreateTool.imageViewWith(image: #imageLiteral(resourceName: "header_2"))
             
     //MARK: - Data
+    var backImageSize: CGSize {
+        return CGSize(width: SCREEN_WIDTH, height: SCREEN_WIDTH * backImageView.height / backImageView.width)
+    }
+    
     var offsetY: CGFloat = 0 {
-        didSet {            
+        didSet {
             if offsetY < 0 { //下拉为负
                 let backImageWidth = backImageSize.width
                 let backImageHeight = backImageSize.height
@@ -37,10 +41,5 @@ class ZoomHeader: UIView {
             }
         }
     }
-    
-    var backImageSize: CGSize {
-        return CGSize(width: SCREEN_WIDTH, height: SCREEN_WIDTH * backImageView.height / backImageView.width)
-    }
-    
     
 }

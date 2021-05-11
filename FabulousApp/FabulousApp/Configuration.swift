@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Kingfisher
 
 let IS_DISTRIBUTION = true
 

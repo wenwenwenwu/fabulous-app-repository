@@ -41,7 +41,7 @@ class MomentCell: UICollectionViewCell {
     
     //MARK: - Setup
     func setup(model: MomentItemModel) {
-        coverView.kf.setImage(with: model.cover.realURL)
+        coverView.kf.setImage(with: model.cover.realURL, placeholder: GRAY_F0F0F0.colorImage(), options: [.transition(.fade(0.4))])
         avatarView.kf.setImage(with: model.user.avatarURL)
         nickNameLabel.text = model.user.nickname
     }

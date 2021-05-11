@@ -7,20 +7,25 @@
 
 import Foundation
 import Kingfisher
+import ESPullToRefresh
 
-class MomentListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MomentWaterfallLayoutDelegate {
+class MomentListVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, WaterfallLayoutDelegate {
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(collectionView)
+        view.addSubview(blankView)
         title = "发现"
-        momentListRequest(isFromStart: true)
+        reloadData()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+        blankView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
     }
@@ -48,10 +53,20 @@ class MomentListVC: UIViewController, UICollectionViewDelegate, UICollectionView
         return itemWidth * heightWidthRatio + rem(40)
     }
     
+    //MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == dataArray.count - PAGE_SIZE {
-            momentListRequest(isFromStart: false)
-        }
+//        if indexPath.row == dataArray.count - PAGE_SIZE {
+//            loadMoreData()
+//        }
+    }
+    
+    //MARK: - Action
+    @objc func reloadData() {
+        momentListRequest(isFromStart: true)
+    }
+    
+    @objc func loadMoreData() {
+        momentListRequest(isFromStart: false)
     }
     
     //MARK: - Request
@@ -60,12 +75,31 @@ class MomentListVC: UIViewController, UICollectionViewDelegate, UICollectionView
             switch result {
             case .success(let dataModel):
                 print(dataModel.description)
+                self.collectionView.es.stopPullToRefresh()
+//                self.collectionView.mj_header!.endRefreshing()
                 self.downloadImages(dataArray: dataModel.items) {
                     self.dataArray = dataModel.totalItems
                     self.collectionView.reloadData()
+                    if self.dataArray.isEmpty {
+                        self.blankView.showNoData()
+                    } else {
+                        self.blankView.hide()
+                        self.collectionView.es.stopLoadingMore()
+                        if dataModel.hasMore == false {
+//                            self.collectionView.mj_footer?.endRefreshingWithNoMoreData()
+                            self.collectionView.es.noticeNoMoreData()
+                        }
+                    }
                 }
             case .failure(let error):
-                HudTool.showInfoHud(error.errMsg)
+                if isFromStart {
+                    self.collectionView.es.stopPullToRefresh()
+                    self.dataArray = []
+                    self.blankView.showError(error)
+                    self.collectionView.reloadData()
+                } else {
+                    HudTool.showInfoHud(error.errMsg)
+                }
             }
         }
     }
@@ -87,19 +121,36 @@ class MomentListVC: UIViewController, UICollectionViewDelegate, UICollectionView
         prefetcher.start()
     }
     
+    
+    
     //MARK: - Component
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = GRAY_F0F0F0
         collectionView.register(MomentCell.self, forCellWithReuseIdentifier: "momentCell")
         collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
+        let header = ESRefreshHeaderAnimator.init()
+        header.loadingDescription = "加载中"
+//        collectionView.es.addPullToRefresh { [unowned self] in
+//            self.reloadData()
+//        }
+        collectionView.es.addPullToRefresh(animator: header) { [unowned self] in
+            self.reloadData()
+        }
+        collectionView.es.addInfiniteScrolling { [unowned self] in
+            self.loadMoreData()
+        }
+//        collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(reloadData))
+//        collectionView.mj_footer = MJRefreshBackNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMoreData))
         return collectionView
     }()
     
-    lazy var flowLayout: MomentWaterfallLayout = {
-        let flowLayout = MomentWaterfallLayout(columnCount: 2, delegate: self)
+    lazy var blankView = BlankView()
+    
+    lazy var flowLayout: WaterfallLayout = {
+        let flowLayout = WaterfallLayout(columnCount: 2, delegate: self)
         flowLayout.setup(columnSpacing: rem(5), rowSpacing: rem(5), sectionInset: UIEdgeInsets(top: rem(5), left: rem(5), bottom: rem(5), right: rem(5)))
         return flowLayout
     }()
@@ -112,3 +163,4 @@ class MomentListVC: UIViewController, UICollectionViewDelegate, UICollectionView
     var itemWidth: CGFloat = 0
         
 }
+

@@ -21,11 +21,15 @@ let SCREEN_HEIGHT: CGFloat = UIScreen.main.bounds.size.height
 
 //MARK: - 颜色常量
 let WHITE_FFFFFF = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+let GRAY_F0F0F0 = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)
 let GRAY_666666 = #colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
+let BLACK_000000 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+
 
 
 //MARK: - 字体常量
 let FONT_12 = UIFont.systemFont(ofSize: rem(12))
+let FONT_14 = UIFont.systemFont(ofSize: rem(14))
 
 
 //MARK: - 通知常量

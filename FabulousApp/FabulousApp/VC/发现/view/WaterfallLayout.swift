@@ -1,5 +1,5 @@
 //
-//  MomentWaterfallLayout.swift
+//  WaterfallLayout.swift
 //  FabulousApp
 //
 //  Created by 邬文文 on 2021/5/10.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol MomentWaterfallLayoutDelegate: AnyObject {
+protocol WaterfallLayoutDelegate: AnyObject {
     func momentWaterfallLayoutItemHeight(for itemWidth: CGFloat, at indexPath: IndexPath) -> CGFloat
 }
 
-class MomentWaterfallLayout: UICollectionViewFlowLayout {
+class WaterfallLayout: UICollectionViewFlowLayout {
     
     /**
      瀑布流的关键：
@@ -23,7 +23,7 @@ class MomentWaterfallLayout: UICollectionViewFlowLayout {
      */
     
     //MARK: - LifeCycle
-    init(columnCount: Int, delegate: MomentWaterfallLayoutDelegate) {
+    init(columnCount: Int, delegate: WaterfallLayoutDelegate) {
         self.columnCount = columnCount
         self.delegate = delegate
         super.init()
@@ -98,7 +98,7 @@ class MomentWaterfallLayout: UICollectionViewFlowLayout {
     }
     
     //MARK: - Component
-    weak var delegate: MomentWaterfallLayoutDelegate!
+    weak var delegate: WaterfallLayoutDelegate!
     
     //MARK: - Data
     var columnCount: Int

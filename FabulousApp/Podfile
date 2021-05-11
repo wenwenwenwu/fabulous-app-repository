@@ -11,6 +11,7 @@ target 'FabulousApp' do
     pod 'IQKeyboardManagerSwift'
     pod 'Kingfisher', '~> 6.0'
     pod 'Alamofire', '~> 5.2'
+pod 'ESPullToRefresh'
     #Objective-C必装
     pod 'MBProgressHUD'
     pod 'FDFullscreenPopGesture'

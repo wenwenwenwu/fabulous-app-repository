@@ -44,7 +44,8 @@
 		5B32F2922648CCA600E4D367 /* MomentParaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F2912648CCA600E4D367 /* MomentParaModel.swift */; };
 		5B32F2962648D15400E4D367 /* MomentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F2952648D15400E4D367 /* MomentListVC.swift */; };
 		5B42E0682649067700618BE6 /* MomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42E0672649067700618BE6 /* MomentCell.swift */; };
-		5B42E06C2649161800618BE6 /* MomentWaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42E06B2649161800618BE6 /* MomentWaterfallLayout.swift */; };
+		5B42E06C2649161800618BE6 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42E06B2649161800618BE6 /* WaterfallLayout.swift */; };
+		5B972A85264A6B4100CB72F9 /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B972A84264A6B4100CB72F9 /* BlankView.swift */; };
 		5BA8F7062646234800AE46ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F7052646234800AE46ED /* AppDelegate.swift */; };
 		5BA8F7082646234800AE46ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F7072646234800AE46ED /* SceneDelegate.swift */; };
 		5BA8F70A2646234800AE46ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F7092646234800AE46ED /* ViewController.swift */; };
@@ -116,7 +117,8 @@
 		5B32F2912648CCA600E4D367 /* MomentParaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentParaModel.swift; sourceTree = "<group>"; };
 		5B32F2952648D15400E4D367 /* MomentListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentListVC.swift; sourceTree = "<group>"; };
 		5B42E0672649067700618BE6 /* MomentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentCell.swift; sourceTree = "<group>"; };
-		5B42E06B2649161800618BE6 /* MomentWaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentWaterfallLayout.swift; sourceTree = "<group>"; };
+		5B42E06B2649161800618BE6 /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
+		5B972A84264A6B4100CB72F9 /* BlankView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		5BA8F7022646234800AE46ED /* FabulousApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FabulousApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA8F7052646234800AE46ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BA8F7072646234800AE46ED /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 				5B035086264647760005ECFC /* TabBarVC.swift */,
 				5B0350752646381D0005ECFC /* NavigationVC.swift */,
 				5BA8F7092646234800AE46ED /* ViewController.swift */,
+				5B972A86264A6B4600CB72F9 /* CommonView */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -343,11 +346,27 @@
 		5B32F2942648D14300E4D367 /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
-				5B42E06B2649161800618BE6 /* MomentWaterfallLayout.swift */,
 				5B32F2952648D15400E4D367 /* MomentListVC.swift */,
-				5B42E0672649067700618BE6 /* MomentCell.swift */,
+				5B972A83264A5D2A00CB72F9 /* view */,
 			);
 			path = "发现";
+			sourceTree = "<group>";
+		};
+		5B972A83264A5D2A00CB72F9 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				5B42E06B2649161800618BE6 /* WaterfallLayout.swift */,
+				5B42E0672649067700618BE6 /* MomentCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		5B972A86264A6B4600CB72F9 /* CommonView */ = {
+			isa = PBXGroup;
+			children = (
+				5B972A84264A6B4100CB72F9 /* BlankView.swift */,
+			);
+			path = CommonView;
 			sourceTree = "<group>";
 		};
 		5BA8F6F92646234800AE46ED = {
@@ -676,6 +695,7 @@
 				5B03506A264630E40005ECFC /* CommonTool.swift in Sources */,
 				5B03506C264630E40005ECFC /* PhotoPickerTool.swift in Sources */,
 				5B035087264647760005ECFC /* TabBarVC.swift in Sources */,
+				5B972A85264A6B4100CB72F9 /* BlankView.swift in Sources */,
 				5B034FA0264630630005ECFC /* Constant.swift in Sources */,
 				5B0350772646381D0005ECFC /* MainVC.swift in Sources */,
 				5B42E0682649067700618BE6 /* MomentCell.swift in Sources */,
@@ -693,7 +713,7 @@
 				5B03508B264658B50005ECFC /* ZoomHeader.swift in Sources */,
 				5B035065264630E40005ECFC /* PagingTool.swift in Sources */,
 				5B035061264630E40005ECFC /* ResponseDataModel.swift in Sources */,
-				5B42E06C2649161800618BE6 /* MomentWaterfallLayout.swift in Sources */,
+				5B42E06C2649161800618BE6 /* WaterfallLayout.swift in Sources */,
 				5B035089264657170005ECFC /* MineVC.swift in Sources */,
 				5B32F2962648D15400E4D367 /* MomentListVC.swift in Sources */,
 				5BA8F7082646234800AE46ED /* SceneDelegate.swift in Sources */,

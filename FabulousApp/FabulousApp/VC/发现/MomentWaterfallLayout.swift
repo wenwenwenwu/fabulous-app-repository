@@ -18,9 +18,8 @@ class MomentWaterfallLayout: UICollectionViewFlowLayout {
      下一个Item加到目前最短的那一列。
      具体实现：
      🐭定义一个columnLenghtDic来实时记录每一列的长度
-     🐭重写每一个UICollectionViewLayoutAttributes对象的frame
-     🐭需要重写4个方法/属性
-     🐭计算长度需要用到columnSpacing, rowSpacing, sectionInset，为此提供了一个setup简便方法
+     🐭重写4个方法/属性，旨在重写每一个UICollectionViewLayoutAttributes对象的frame
+     🐭计算长度需要用到columnSpacing, rowSpacing, sectionInset，干脆提供了一个setup简便方法
      */
     
     //MARK: - LifeCycle

@@ -26,15 +26,15 @@ class MomentCell: UICollectionViewCell {
         super.layoutSubviews()
         coverView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
-            make.bottom.equalTo(-40)
+            make.bottom.equalTo(rem(-40))
         }
         avatarView.snp.makeConstraints { (make) in
-            make.size.equalTo(CGSize(width: 20, height: 20))
-            make.top.equalTo(coverView.snp.bottom).offset(10)
+            make.size.equalTo(CGSize(width: rem(20), height: rem(20)))
+            make.top.equalTo(coverView.snp.bottom).offset(rem(10))
         }
         nickNameLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(avatarView)
-            make.left.equalTo(avatarView.snp.right).offset(5)
+            make.left.equalTo(avatarView.snp.right).offset(rem(5))
         }
         
     }
@@ -49,13 +49,13 @@ class MomentCell: UICollectionViewCell {
     //MARK: - Component
     lazy var coverView: UIImageView = {
         let avatarView = CreateTool.imageViewWith()
-        avatarView.addCorner(cornerRadius: 4)
+        avatarView.addCorner(cornerRadius: rem(4))
         return avatarView
     }()
     
     lazy var avatarView: UIImageView = {
         let avatarView = CreateTool.imageViewWith()
-        avatarView.addCorner(cornerRadius: 10)
+        avatarView.addCorner(cornerRadius: rem(10))
         return avatarView
     }()
     

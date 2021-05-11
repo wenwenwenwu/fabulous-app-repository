@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Kingfisher
 
 class MomentListVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, MomentWaterfallLayoutDelegate {
     
@@ -14,8 +15,6 @@ class MomentListVC: UIViewController, UICollectionViewDelegate, UICollectionView
         super.viewDidLoad()
         view.addSubview(collectionView)
         title = "发现"
-        collectionView.dataSource = self
-        collectionView.delegate = self
         momentListRequest(isFromStart: true)
     }
     
@@ -45,13 +44,12 @@ class MomentListVC: UIViewController, UICollectionViewDelegate, UICollectionView
     
     //MARK: - MomentWaterfallLayoutDelegate
     func momentWaterfallLayoutItemHeight(for itemWidth: CGFloat, at indexPath: IndexPath) -> CGFloat {
-        let coverModel = dataArray[indexPath.row].cover
-        let ratio = coverModel.height / coverModel.width
-        return itemWidth * ratio + 40
+        let heightWidthRatio = dataArray[indexPath.row].cover.heightWidthRatio
+        return itemWidth * heightWidthRatio + rem(40)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == dataArray.count - 10 {
+        if indexPath.row == dataArray.count - PAGE_SIZE {
             momentListRequest(isFromStart: false)
         }
     }
@@ -61,12 +59,32 @@ class MomentListVC: UIViewController, UICollectionViewDelegate, UICollectionView
         Store.momentListPagingRequest(isFromStart: isFromStart) { result in
             switch result {
             case .success(let dataModel):
-                self.dataArray = dataModel.totalItems
-                self.collectionView.reloadData()
+                print(dataModel.description)
+                self.downloadImages(dataArray: dataModel.items) {
+                    self.dataArray = dataModel.totalItems
+                    self.collectionView.reloadData()
+                }
             case .failure(let error):
                 HudTool.showInfoHud(error.errMsg)
             }
         }
+    }
+    
+    //MARK: - Method
+    func downloadImages(dataArray: [MomentItemModel], completion : @escaping (() -> Void)) {
+        var imageURLArray = [URL]()
+        for item in dataArray {            
+            if let coverURL = item.cover.realURL {
+                imageURLArray.append(coverURL)
+            }
+            if let avatarURL = item.user.avatarURL {
+                imageURLArray.append(avatarURL)
+            }
+        }
+        let prefetcher = ImagePrefetcher.init(urls: imageURLArray) { _,_,_  in
+            completion()
+        }
+        prefetcher.start()
     }
     
     //MARK: - Component
@@ -75,6 +93,8 @@ class MomentListVC: UIViewController, UICollectionViewDelegate, UICollectionView
         collectionView.backgroundColor = UIColor.white
         collectionView.register(MomentCell.self, forCellWithReuseIdentifier: "momentCell")
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
         return collectionView
     }()
     
@@ -90,6 +110,5 @@ class MomentListVC: UIViewController, UICollectionViewDelegate, UICollectionView
     let columnCount = 2
     
     var itemWidth: CGFloat = 0
-    
-    
+        
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     
@@ -37,7 +38,11 @@ class TabBarVC: UITabBarController, UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         //监听将要点击事件
         guard let _ = tabBarController.tabBar.selectedItem!.title else {
-            print("点击发布按钮")
+            let cache = ImageCache.default
+            cache.clearCache {
+                print("已清空全部缓存")
+            }
+            
             return false
         }
         return true

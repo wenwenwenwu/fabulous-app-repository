@@ -27,7 +27,6 @@
 		5B035065264630E40005ECFC /* PagingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B035003264630E40005ECFC /* PagingTool.swift */; };
 		5B035066264630E40005ECFC /* PagingResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B035004264630E40005ECFC /* PagingResponseModel.swift */; };
 		5B035067264630E40005ECFC /* RawPagingResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B035005264630E40005ECFC /* RawPagingResponseModel.swift */; };
-		5B035068264630E40005ECFC /* PageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B035006264630E40005ECFC /* PageSize.swift */; };
 		5B035069264630E40005ECFC /* ValidateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B035007264630E40005ECFC /* ValidateTool.swift */; };
 		5B03506A264630E40005ECFC /* CommonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B035008264630E40005ECFC /* CommonTool.swift */; };
 		5B03506B264630E40005ECFC /* CreateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B035009264630E40005ECFC /* CreateTool.swift */; };
@@ -100,7 +99,6 @@
 		5B035003264630E40005ECFC /* PagingTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingTool.swift; sourceTree = "<group>"; };
 		5B035004264630E40005ECFC /* PagingResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingResponseModel.swift; sourceTree = "<group>"; };
 		5B035005264630E40005ECFC /* RawPagingResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawPagingResponseModel.swift; sourceTree = "<group>"; };
-		5B035006264630E40005ECFC /* PageSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageSize.swift; sourceTree = "<group>"; };
 		5B035007264630E40005ECFC /* ValidateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValidateTool.swift; sourceTree = "<group>"; };
 		5B035008264630E40005ECFC /* CommonTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTool.swift; sourceTree = "<group>"; };
 		5B035009264630E40005ECFC /* CreateTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTool.swift; sourceTree = "<group>"; };
@@ -279,7 +277,6 @@
 			children = (
 				5B035003264630E40005ECFC /* PagingTool.swift */,
 				5B035071264634790005ECFC /* Model */,
-				5B035006264630E40005ECFC /* PageSize.swift */,
 				5B035072264634D30005ECFC /* PagingProtocol.swift */,
 			);
 			path = PagingTool;
@@ -686,7 +683,6 @@
 				5B035069264630E40005ECFC /* ValidateTool.swift in Sources */,
 				5B034FA1264630630005ECFC /* Store.swift in Sources */,
 				5B035063264630E40005ECFC /* WebErrorModel.swift in Sources */,
-				5B035068264630E40005ECFC /* PageSize.swift in Sources */,
 				5B035059264630E40005ECFC /* UIColor.swift in Sources */,
 				5B03507C264638CE0005ECFC /* LoginInfoModel.swift in Sources */,
 				5B0350782646381D0005ECFC /* NavigationVC.swift in Sources */,

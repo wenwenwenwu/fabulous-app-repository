@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 
+let PAGE_SIZE = 10
+
 //PagingTool是一个记录分页数据的工具模型
 class PagingTool<ParaModel: Paging, ResponseModel: Codable> {
     

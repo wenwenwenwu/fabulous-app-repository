@@ -14,6 +14,7 @@ struct MomentItemModel: Codable {
     var content: String?
     var cover: MomentItemCoverItemModel
     var user: MomentItemUserModel
+    
 
 }
 
@@ -23,10 +24,13 @@ struct MomentItemCoverItemModel: Codable {
     var width: CGFloat
     var height: CGFloat
     
-    var realURL: URL {
-        return URL(string: url)!
+    var realURL: URL? {
+        return URL(string: url)
     }
     
+    var heightWidthRatio: CGFloat {
+        return width == 0 ? 1 : height / width
+    }
 }
 
 struct MomentItemUserModel: Codable {
@@ -34,8 +38,8 @@ struct MomentItemUserModel: Codable {
     var avatar: String
     var nickname: String
     
-    var avatarURL: URL {
-        return URL(string: avatar)!
+    var avatarURL: URL? {
+        return URL(string: avatar)
     }
 }
 

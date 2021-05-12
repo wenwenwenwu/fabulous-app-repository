@@ -28,6 +28,8 @@ let BLACK_000000 = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
 
 
 //MARK: - 字体常量
+let FONT_10 = UIFont.systemFont(ofSize: rem(10))
+let FONT_11_BOLD = UIFont.systemFont(ofSize: rem(11), weight: .bold)
 let FONT_12 = UIFont.systemFont(ofSize: rem(12))
 let FONT_14 = UIFont.systemFont(ofSize: rem(14))
 

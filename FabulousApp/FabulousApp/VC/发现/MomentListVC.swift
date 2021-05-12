@@ -55,9 +55,9 @@ class MomentListVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     //MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        if indexPath.row == dataArray.count - PAGE_SIZE {
-//            loadMoreData()
-//        }
+        if indexPath.row == dataArray.count - PAGE_SIZE {
+            loadMoreData()
+        }
     }
     
     //MARK: - Action
@@ -72,11 +72,14 @@ class MomentListVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     //MARK: - Request
     func momentListRequest(isFromStart: Bool) {
         Store.momentListPagingRequest(isFromStart: isFromStart) { result in
+            if isFromStart {
+                self.collectionView.es.stopPullToRefresh()
+            } else {
+                self.collectionView.es.stopLoadingMore()
+            }
             switch result {
             case .success(let dataModel):
                 print(dataModel.description)
-                self.collectionView.es.stopPullToRefresh()
-//                self.collectionView.mj_header!.endRefreshing()
                 self.downloadImages(dataArray: dataModel.items) {
                     self.dataArray = dataModel.totalItems
                     self.collectionView.reloadData()
@@ -84,19 +87,16 @@ class MomentListVC: UIViewController, UICollectionViewDataSource, UICollectionVi
                         self.blankView.showNoData()
                     } else {
                         self.blankView.hide()
-                        self.collectionView.es.stopLoadingMore()
                         if dataModel.hasMore == false {
-//                            self.collectionView.mj_footer?.endRefreshingWithNoMoreData()
                             self.collectionView.es.noticeNoMoreData()
                         }
                     }
                 }
             case .failure(let error):
                 if isFromStart {
-                    self.collectionView.es.stopPullToRefresh()
                     self.dataArray = []
-                    self.blankView.showError(error)
                     self.collectionView.reloadData()
+                    self.blankView.showError(error)
                 } else {
                     HudTool.showInfoHud(error.errMsg)
                 }
@@ -106,22 +106,24 @@ class MomentListVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     //MARK: - Method
     func downloadImages(dataArray: [MomentItemModel], completion : @escaping (() -> Void)) {
-        var imageURLArray = [URL]()
-        for item in dataArray {            
-            if let coverURL = item.cover.realURL {
-                imageURLArray.append(coverURL)
+        DispatchQueue.global().async {
+            var imageURLArray = [URL]()
+            for item in dataArray {
+                if let coverURL = item.cover.realURL {
+                    imageURLArray.append(coverURL)
+                }
+                if let avatarURL = item.user.avatarURL {
+                    imageURLArray.append(avatarURL)
+                }
             }
-            if let avatarURL = item.user.avatarURL {
-                imageURLArray.append(avatarURL)
+            let prefetcher = ImagePrefetcher.init(urls: imageURLArray) { _,_,_  in
+                DispatchQueue.main.async {
+                    completion()
+                }
             }
+            prefetcher.start()
         }
-        let prefetcher = ImagePrefetcher.init(urls: imageURLArray) { _,_,_  in
-            completion()
-        }
-        prefetcher.start()
     }
-    
-    
     
     //MARK: - Component
     lazy var collectionView: UICollectionView = {
@@ -131,29 +133,38 @@ class MomentListVC: UIViewController, UICollectionViewDataSource, UICollectionVi
         collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        let header = ESRefreshHeaderAnimator.init()
-        header.loadingDescription = "加载中"
-//        collectionView.es.addPullToRefresh { [unowned self] in
-//            self.reloadData()
-//        }
-        collectionView.es.addPullToRefresh(animator: header) { [unowned self] in
+        collectionView.es.addPullToRefresh(animator: refreshHeader) { [unowned self] in
             self.reloadData()
         }
-        collectionView.es.addInfiniteScrolling { [unowned self] in
+        collectionView.es.addInfiniteScrolling(animator: loadMoreFooter)  { [unowned self] in
             self.loadMoreData()
         }
-//        collectionView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(reloadData))
-//        collectionView.mj_footer = MJRefreshBackNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMoreData))
         return collectionView
     }()
+        
+    lazy var refreshHeader: ESRefreshHeaderAnimator = {
+        let refreshHeader = ESRefreshHeaderAnimator.init()
+        refreshHeader.loadingDescription = "正在刷新数据中..."
+        refreshHeader.releaseToRefreshDescription = "松开立即刷新"
+        refreshHeader.pullToRefreshDescription = "下拉可以刷新"
+        return refreshHeader
+    }()
     
-    lazy var blankView = BlankView()
+    lazy var loadMoreFooter: ESRefreshFooterAnimator = {
+        let loadMoreFooter = ESRefreshFooterAnimator()
+        loadMoreFooter.loadingDescription = "正在加载更多的数据..."
+        loadMoreFooter.loadingMoreDescription = "上拉加载更多"
+        loadMoreFooter.noMoreDataDescription = "已经全部加载完毕"
+        return loadMoreFooter
+    }()
     
     lazy var flowLayout: WaterfallLayout = {
         let flowLayout = WaterfallLayout(columnCount: 2, delegate: self)
         flowLayout.setup(columnSpacing: rem(5), rowSpacing: rem(5), sectionInset: UIEdgeInsets(top: rem(5), left: rem(5), bottom: rem(5), right: rem(5)))
         return flowLayout
     }()
+    
+    lazy var blankView = BlankView()
     
     //MARK: - Data
     var dataArray = [MomentItemModel]()

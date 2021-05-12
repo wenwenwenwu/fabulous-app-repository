@@ -33,7 +33,7 @@ class PagingTool<ParaModel: Paging, ResponseModel: Codable> {
         }
         var actualParaModel = paraModel
         actualParaModel.pageNum = String(requestPage)
-        WebTool.request(debug: debug, httpMethod: httpMethod, uri: uri, paraModel: actualParaModel, responseModelType: RawPagingResponseModel<ResponseModel>.self) { (result) in
+        WebTool.request(debug: debug, showHud: false, httpMethod: httpMethod, uri: uri, paraModel: actualParaModel, responseModelType: RawPagingResponseModel<ResponseModel>.self) { (result) in
             switch result {
             case .success(let dataModel):
                 //防止分页请求发起太快，requestPage还未增加

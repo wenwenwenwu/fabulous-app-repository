@@ -13,9 +13,9 @@ let BASE_URL = (IS_DISTRIBUTION) ? "https://api.apuxiao.com/pig/v1/cms/" : "http
 class WebTool {
     
     //MARK: - 请求数据
-    static func request<ParaModel: Codable, ResponseModel: Codable>(debug: Bool = false, httpMethod: HTTPMethod, uri: String, paraModel: ParaModel, responseModelType: ResponseModel.Type, completion : @escaping (Result<ResponseModel,WebErrorModel>) -> Void)  {
+    static func request<ParaModel: Codable, ResponseModel: Codable>(debug: Bool = false, showHud: Bool = true, httpMethod: HTTPMethod, uri: String, paraModel: ParaModel, responseModelType: ResponseModel.Type, completion : @escaping (Result<ResponseModel,WebErrorModel>) -> Void)  {
         //通过UI加锁
-        HudTool.showHud()
+        if showHud { HudTool.showHud() }
         //请求
         var headers: HTTPHeaders?
         headers = [
@@ -29,7 +29,7 @@ class WebTool {
             .responseJSON
             { response in
                 //通过UI解锁
-                HudTool.dismissHud()
+                if showHud { HudTool.dismissHud() }                
                 //处理返回数据并回调
                 self.handleResponse(debug: debug, response: response, completion: completion)
             }

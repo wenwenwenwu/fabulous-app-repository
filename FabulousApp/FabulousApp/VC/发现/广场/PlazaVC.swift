@@ -24,38 +24,53 @@ class PlazaVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     //MARK: - UITableViewDataSource
+    func numberOfSections(in tableView: UITableView) -> Int {
+        guard let _ = dataModel else { return 0 }
+        return 2
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let _ = dataModel else { return 0 }
-        return 3
+        if section == 0 {
+            return 2
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let sceneTypeCell = CreateTool.cellWith(className: PlazaCell_Type.self, tableView: tableView)
-            sceneTypeCell.setupSceneTypeLayout()
-            sceneTypeCell.setup(modelArray: sceneTypeCellModelArray)
-            return sceneTypeCell
-        } else if indexPath.row == 1 {
-            let goalTypeCell = CreateTool.cellWith(className: PlazaCell_Type.self, tableView: tableView)
-            goalTypeCell.setupGoalTypeLayout()
-            goalTypeCell.setup(modelArray: goalTypeCellModelArray)
-            return goalTypeCell
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
+                let sceneTypeCell = CreateTool.cellWith(className: PlazaCell_Type.self, tableView: tableView)
+                sceneTypeCell.setupSceneTypeLayout()
+                sceneTypeCell.setup(modelArray: sceneTypeCellModelArray)
+                return sceneTypeCell
+            } else {
+                let goalTypeCell = CreateTool.cellWith(className: PlazaCell_Type.self, tableView: tableView)
+                goalTypeCell.setupGoalTypeLayout()
+                goalTypeCell.setup(modelArray: goalTypeCellModelArray)
+                return goalTypeCell
+            }
         } else {
             let userCell = CreateTool.cellWith(className: PlazaCell_User.self, tableView: tableView)
             userCell.setupUserLayout()
             userCell.setup(modelArray: userCellModelArray)
             return userCell
         }
-        
     }
     
     //MARK: - UITableViewDelegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return PlazaCell.cellHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionHeader = PlazaSectionHeader()
+        if section == 0 {
+            sectionHeader.setup(title: "穿搭广场")
+        } else {
+            sectionHeader.setup(title: "时尚改造师")
+        }
+        return sectionHeader        
     }
     
     //MARK: - Request
@@ -76,6 +91,7 @@ class PlazaVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     //MARK: - Component
     lazy var tableView: UITableView = {
         let tableView = CreateTool.tableViewWith(style: .plain, backgroundColor: WHITE_FFFFFF, dataSource: self, delegate: self)
+        tableView.sectionHeaderHeight = rem(30)
         return tableView
     }()
     

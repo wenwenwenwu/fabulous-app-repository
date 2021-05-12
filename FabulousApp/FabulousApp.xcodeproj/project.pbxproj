@@ -46,6 +46,7 @@
 		5B092BFF264BBAA30007AA56 /* PlazaCell_Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B092BFE264BBAA30007AA56 /* PlazaCell_Type.swift */; };
 		5B092C01264BBD9C0007AA56 /* PlazaTypeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B092C00264BBD9C0007AA56 /* PlazaTypeCellModel.swift */; };
 		5B092C06264BC5F00007AA56 /* PlazaCell_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B092C05264BC5F00007AA56 /* PlazaCell_User.swift */; };
+		5B092C09264BCEFC0007AA56 /* PlazaSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B092C08264BCEFC0007AA56 /* PlazaSectionHeader.swift */; };
 		5B32F2902648C8D400E4D367 /* MomentItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F28F2648C8D400E4D367 /* MomentItemModel.swift */; };
 		5B32F2922648CCA600E4D367 /* MomentParaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F2912648CCA600E4D367 /* MomentParaModel.swift */; };
 		5B32F2962648D15400E4D367 /* MomentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F2952648D15400E4D367 /* MomentListVC.swift */; };
@@ -125,6 +126,7 @@
 		5B092BFE264BBAA30007AA56 /* PlazaCell_Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlazaCell_Type.swift; sourceTree = "<group>"; };
 		5B092C00264BBD9C0007AA56 /* PlazaTypeCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlazaTypeCellModel.swift; sourceTree = "<group>"; };
 		5B092C05264BC5F00007AA56 /* PlazaCell_User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlazaCell_User.swift; sourceTree = "<group>"; };
+		5B092C08264BCEFC0007AA56 /* PlazaSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlazaSectionHeader.swift; sourceTree = "<group>"; };
 		5B32F28F2648C8D400E4D367 /* MomentItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentItemModel.swift; sourceTree = "<group>"; };
 		5B32F2912648CCA600E4D367 /* MomentParaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentParaModel.swift; sourceTree = "<group>"; };
 		5B32F2952648D15400E4D367 /* MomentListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentListVC.swift; sourceTree = "<group>"; };
@@ -368,9 +370,8 @@
 		5B092C02264BC5980007AA56 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5B092BFC264BA3B00007AA56 /* PlazaCell.swift */,
-				5B092C05264BC5F00007AA56 /* PlazaCell_User.swift */,
-				5B092C03264BC5AF0007AA56 /* PlazaCell_Type */,
+				5B092C07264BCED30007AA56 /* PlazaCell */,
+				5B092C08264BCEFC0007AA56 /* PlazaSectionHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -382,6 +383,16 @@
 				5B092C00264BBD9C0007AA56 /* PlazaTypeCellModel.swift */,
 			);
 			path = PlazaCell_Type;
+			sourceTree = "<group>";
+		};
+		5B092C07264BCED30007AA56 /* PlazaCell */ = {
+			isa = PBXGroup;
+			children = (
+				5B092BFC264BA3B00007AA56 /* PlazaCell.swift */,
+				5B092C05264BC5F00007AA56 /* PlazaCell_User.swift */,
+				5B092C03264BC5AF0007AA56 /* PlazaCell_Type */,
+			);
+			path = PlazaCell;
 			sourceTree = "<group>";
 		};
 		5B32F2932648D12900E4D367 /* 我的 */ = {
@@ -737,6 +748,7 @@
 				5B035067264630E40005ECFC /* RawPagingResponseModel.swift in Sources */,
 				5B035066264630E40005ECFC /* PagingResponseModel.swift in Sources */,
 				5B03505E264630E40005ECFC /* ApplicationTool.swift in Sources */,
+				5B092C09264BCEFC0007AA56 /* PlazaSectionHeader.swift in Sources */,
 				5B03502F264630E40005ECFC /* BlankRequestModel.swift in Sources */,
 				5B03506B264630E40005ECFC /* CreateTool.swift in Sources */,
 				5B03505A264630E40005ECFC /* String.swift in Sources */,

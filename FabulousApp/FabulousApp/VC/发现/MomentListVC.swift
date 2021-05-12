@@ -81,7 +81,7 @@ class MomentListVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             case .success(let dataModel):
                 print(dataModel.description)
                 self.downloadImages(dataArray: dataModel.items) {
-                    self.dataArray = dataModel.totalItems
+                    self.dataArray = dataModel.totalItems //苹果已做局部刷新优化
                     self.collectionView.reloadData()
                     if self.dataArray.isEmpty {
                         self.blankView.showNoData()
@@ -106,7 +106,6 @@ class MomentListVC: UIViewController, UICollectionViewDataSource, UICollectionVi
     
     //MARK: - Method
     func downloadImages(dataArray: [MomentItemModel], completion : @escaping (() -> Void)) {
-        DispatchQueue.global().async {
             var imageURLArray = [URL]()
             for item in dataArray {
                 if let coverURL = item.cover.realURL {
@@ -117,12 +116,9 @@ class MomentListVC: UIViewController, UICollectionViewDataSource, UICollectionVi
                 }
             }
             let prefetcher = ImagePrefetcher.init(urls: imageURLArray) { _,_,_  in
-                DispatchQueue.main.async {
-                    completion()
-                }
+                    completion() //框架已经做了线程转换
             }
             prefetcher.start()
-        }
     }
     
     //MARK: - Component

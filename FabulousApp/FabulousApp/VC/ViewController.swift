@@ -7,12 +7,8 @@
 
 import UIKit
 
-class ViewController: UIViewController, PageVCProtocol {
-    func pageVCDidAppear() {
-        
-    }
+class ViewController: UIViewController {
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: CGFloat(arc4random() % 256) / 256.0, green: CGFloat(arc4random() % 256) / 256.0, blue: CGFloat(arc4random() % 256) / 256.0, alpha: 1)

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PlazaVC: UIViewController, PageVCProtocol, UITableViewDataSource, UITableViewDelegate {
+class PlazaVC: UIViewController, PageVCDelegate, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - PageVCProtocol
     func pageVCDidAppear() {

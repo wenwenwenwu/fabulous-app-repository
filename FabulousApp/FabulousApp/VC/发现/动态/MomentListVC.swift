@@ -9,7 +9,7 @@ import Foundation
 import Kingfisher
 import ESPullToRefresh
 
-class MomentListVC: UIViewController, PageVCProtocol, UICollectionViewDataSource, UICollectionViewDelegate, WaterfallLayoutDelegate {
+class MomentListVC: UIViewController, PageVCDelegate, UICollectionViewDataSource, UICollectionViewDelegate, WaterfallLayoutDelegate {
     
     //MARK: - PageVCProtocol
     func pageVCDidAppear() {
@@ -60,6 +60,10 @@ class MomentListVC: UIViewController, PageVCProtocol, UICollectionViewDataSource
     }
     
     //MARK: - UICollectionViewDelegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        NotificationCenter.default.post(Notification.init(name: .SCROLL_UP))
+    }
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.row == dataArray.count - PAGE_SIZE {
             loadMoreData()

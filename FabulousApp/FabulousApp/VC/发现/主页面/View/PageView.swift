@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PageVCProtocol: UIViewController {
+protocol PageVCDelegate: UIViewController {
     func pageVCDidAppear()
 }
 
@@ -19,7 +19,7 @@ protocol PageViewDelegate: AnyObject {
 class PageView: UIView, UIScrollViewDelegate {
     
     //MARK: - LifeCycle
-    init(ownerVC: UIViewController, pageVCArray: [PageVCProtocol]) {
+    init(ownerVC: UIViewController, pageVCArray: [PageVCDelegate]) {
         self.ownerVC = ownerVC
         self.pageVCArray = pageVCArray
         super.init(frame: .zero)
@@ -80,7 +80,7 @@ class PageView: UIView, UIScrollViewDelegate {
     //MARK: - Data
     var ownerVC: UIViewController
     
-    var pageVCArray = [PageVCProtocol]()
+    var pageVCArray = [PageVCDelegate]()
     
     var currentPageIndex = 0
     

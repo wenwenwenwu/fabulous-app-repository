@@ -38,8 +38,8 @@ let FONT_18_BOLD = UIFont.systemFont(ofSize: rem(18), weight: .bold)
 //MARK: - 通知常量
 extension Notification.Name{
     
-    static var UPDATE_PROGRESS_LIST: Notification.Name {
-        Notification.Name("updateProgressList")
+    static var SCROLL_UP: Notification.Name {
+        Notification.Name("scrollUp")
     }
     
 }

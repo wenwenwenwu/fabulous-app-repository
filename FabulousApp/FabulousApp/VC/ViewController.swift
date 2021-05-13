@@ -7,7 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, PageVCProtocol {
+    func pageVCDidAppear() {
+        
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()

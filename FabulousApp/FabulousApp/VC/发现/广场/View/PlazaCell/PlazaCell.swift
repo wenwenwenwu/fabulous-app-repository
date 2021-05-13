@@ -21,30 +21,29 @@ class PlazaCell: UITableViewCell {
     }
         
     //MARK: - Setup
-    func setup(imageSize: CGSize, imageRadius: CGFloat, imageSpacing: CGFloat, padding: UIEdgeInsets) {
+    func setup(imageSize: CGSize, imageRadius: CGFloat, imageSpacing: CGFloat, contentInsets: UIEdgeInsets) {
         self.imageSize = imageSize
         self.imageRadius = imageRadius
         self.imageSpacing = imageSpacing
-        //padding指的是scrollview看起来的上下左右边距
-        //实际上scrollview的上下边距同padding，而左右边距恒为0。padding的左右边距是指添加的首尾图片在content View中的左右边距
-        self.padding = padding
-        PlazaCell.cellHeight = imageSize.height + padding.top + padding.bottom
+        //scrollview的上下边距同contentInsets，而左右边距恒为0。contentInsets的左右边距是指添加的首尾图片在contentView中的左右边距
+        self.contentInsets = contentInsets
+        PlazaCell.cellHeight = imageSize.height + contentInsets.top + contentInsets.bottom
     }
     
     func setup(imageURLs: [URL?]) {
         scrollView.removeAllSubviews() //防止reuse时重复添加
         scrollView.frame = CGRect(
             x: 0,
-            y: padding.top,
+            y: contentInsets.top,
             width: SCREEN_WIDTH,
             height: imageSize.height
         )
         scrollView.contentSize = CGSize(
-            width: padding.left + imageSize.width * CGFloat(imageURLs.count) + imageSpacing * CGFloat(imageURLs.count - 1) + padding.right,
+            width: contentInsets.left + imageSize.width * CGFloat(imageURLs.count) + imageSpacing * CGFloat(imageURLs.count - 1) + contentInsets.right,
             height: imageSize.height
         )
         contentView.addSubview(scrollView)
-        var imageLeft: CGFloat = padding.left
+        var imageLeft: CGFloat = contentInsets.left
         for item in imageURLs {
             let imageView = CreateTool.imageViewWith()
             imageView.addCorner(cornerRadius: imageRadius)
@@ -57,7 +56,7 @@ class PlazaCell: UITableViewCell {
     }
     
     //MARK: - Component
-    lazy var scrollView = CreateTool.scrollViewWith()
+    lazy var scrollView = CreateTool.scrollViewWith(backgroundColor: WHITE_FFFFFF, showsHorizontalScrollIndicator: false)
     
     //MARK: - Data
     var imageSize = CGSize.zero
@@ -66,7 +65,7 @@ class PlazaCell: UITableViewCell {
     
     var imageSpacing: CGFloat = 0
     
-    var padding = UIEdgeInsets.zero
+    var contentInsets = UIEdgeInsets.zero
     
     static var cellHeight: CGFloat = 0
     

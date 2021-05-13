@@ -9,7 +9,13 @@ import Foundation
 import Kingfisher
 import ESPullToRefresh
 
-class MomentListVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, WaterfallLayoutDelegate {
+class MomentListVC: UIViewController, PageVCProtocol, UICollectionViewDataSource, UICollectionViewDelegate, WaterfallLayoutDelegate {
+    
+    //MARK: - PageVCProtocol
+    func pageVCDidAppear() {
+        
+    }
+    
     
     //MARK: - LifeCycle
     override func viewDidLoad() {

@@ -7,7 +7,13 @@
 
 import Foundation
 
-class PlazaVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class PlazaVC: UIViewController, PageVCProtocol, UITableViewDataSource, UITableViewDelegate {
+    
+    //MARK: - PageVCProtocol
+    func pageVCDidAppear() {
+        
+    }
+    
     
     //MARK: - LifeCycle
     override func viewDidLoad() {

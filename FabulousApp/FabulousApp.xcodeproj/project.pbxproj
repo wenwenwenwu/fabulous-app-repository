@@ -50,6 +50,9 @@
 		5B32F2902648C8D400E4D367 /* MomentItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F28F2648C8D400E4D367 /* MomentItemModel.swift */; };
 		5B32F2922648CCA600E4D367 /* MomentParaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F2912648CCA600E4D367 /* MomentParaModel.swift */; };
 		5B32F2962648D15400E4D367 /* MomentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F2952648D15400E4D367 /* MomentListVC.swift */; };
+		5B3D22F7264CB6CA00B9D742 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3D22F5264CB6CA00B9D742 /* PageView.swift */; };
+		5B3D22F8264CB6CA00B9D742 /* SelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3D22F6264CB6CA00B9D742 /* SelectView.swift */; };
+		5B3D22FC264CCCA100B9D742 /* DiscoverVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3D22FB264CCCA100B9D742 /* DiscoverVC.swift */; };
 		5B42E0682649067700618BE6 /* MomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42E0672649067700618BE6 /* MomentCell.swift */; };
 		5B42E06C2649161800618BE6 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42E06B2649161800618BE6 /* WaterfallLayout.swift */; };
 		5B972A85264A6B4100CB72F9 /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B972A84264A6B4100CB72F9 /* BlankView.swift */; };
@@ -130,6 +133,9 @@
 		5B32F28F2648C8D400E4D367 /* MomentItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentItemModel.swift; sourceTree = "<group>"; };
 		5B32F2912648CCA600E4D367 /* MomentParaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentParaModel.swift; sourceTree = "<group>"; };
 		5B32F2952648D15400E4D367 /* MomentListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentListVC.swift; sourceTree = "<group>"; };
+		5B3D22F5264CB6CA00B9D742 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		5B3D22F6264CB6CA00B9D742 /* SelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectView.swift; sourceTree = "<group>"; };
+		5B3D22FB264CCCA100B9D742 /* DiscoverVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverVC.swift; sourceTree = "<group>"; };
 		5B42E0672649067700618BE6 /* MomentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentCell.swift; sourceTree = "<group>"; };
 		5B42E06B2649161800618BE6 /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
 		5B972A84264A6B4100CB72F9 /* BlankView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
@@ -407,10 +413,21 @@
 		5B32F2942648D14300E4D367 /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
+				5B3D22FD264CCEA100B9D742 /* 主页面 */,
 				5B092BFB264BA3120007AA56 /* 广场 */,
 				5B092BFA264BA2ED0007AA56 /* 动态 */,
 			);
 			path = "发现";
+			sourceTree = "<group>";
+		};
+		5B3D22FD264CCEA100B9D742 /* 主页面 */ = {
+			isa = PBXGroup;
+			children = (
+				5B3D22FB264CCCA100B9D742 /* DiscoverVC.swift */,
+				5B3D22F5264CB6CA00B9D742 /* PageView.swift */,
+				5B3D22F6264CB6CA00B9D742 /* SelectView.swift */,
+			);
+			path = "主页面";
 			sourceTree = "<group>";
 		};
 		5B972A83264A5D2A00CB72F9 /* view */ = {
@@ -759,6 +776,8 @@
 				5B092BFD264BA3B00007AA56 /* PlazaCell.swift in Sources */,
 				5B03506A264630E40005ECFC /* CommonTool.swift in Sources */,
 				5B092BF9264B9E9C0007AA56 /* PlazaVC.swift in Sources */,
+				5B3D22F8264CB6CA00B9D742 /* SelectView.swift in Sources */,
+				5B3D22F7264CB6CA00B9D742 /* PageView.swift in Sources */,
 				5B03506C264630E40005ECFC /* PhotoPickerTool.swift in Sources */,
 				5B092BF7264B82120007AA56 /* PlazaModel.swift in Sources */,
 				5B035087264647760005ECFC /* TabBarVC.swift in Sources */,
@@ -775,6 +794,7 @@
 				5B0350782646381D0005ECFC /* NavigationVC.swift in Sources */,
 				5B03506E264630E40005ECFC /* AccountTool.swift in Sources */,
 				5B03506D264630E40005ECFC /* CountDownTool.swift in Sources */,
+				5B3D22FC264CCCA100B9D742 /* DiscoverVC.swift in Sources */,
 				5B034F9F264630630005ECFC /* Configuration.swift in Sources */,
 				5B035058264630E40005ECFC /* UIView.swift in Sources */,
 				5B03508B264658B50005ECFC /* ZoomHeader.swift in Sources */,

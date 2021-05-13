@@ -73,7 +73,6 @@ class CreateTool {
         if let backgroundView = backgroundView {
             tableView.backgroundView = backgroundView
         }
-        tableView.contentInsetAdjustmentBehavior = .never//从状态栏顶部开始布局
         tableView.dataSource = dataSource
         tableView.delegate = delegate
         tableView.showsVerticalScrollIndicator = false
@@ -113,10 +112,14 @@ class CreateTool {
         return textField
     }
     
-    static func scrollViewWith(showsVerticalScrollIndicator: Bool = false, showsHorizontalScrollIndicator: Bool = false)->UIScrollView {
+    static func scrollViewWith(backgroundColor: UIColor? = nil, isPagingEnabled: Bool = false, bounces: Bool = true, showsVerticalScrollIndicator: Bool = true, showsHorizontalScrollIndicator: Bool = true, delegate: UIScrollViewDelegate? = nil)->UIScrollView {
         let scrollView = UIScrollView()
+        scrollView.backgroundColor = backgroundColor
+        scrollView.isPagingEnabled = isPagingEnabled
+        scrollView.bounces = bounces
         scrollView.showsVerticalScrollIndicator = showsVerticalScrollIndicator
         scrollView.showsHorizontalScrollIndicator = showsHorizontalScrollIndicator
+        scrollView.delegate = delegate
         return scrollView
     }
     

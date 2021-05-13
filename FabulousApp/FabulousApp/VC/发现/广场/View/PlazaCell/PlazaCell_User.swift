@@ -11,7 +11,7 @@ class PlazaCell_User: PlazaCell {
     
     //MARK: - Setup
     func setupUserLayout() {
-        setup(imageSize: CGSize(width: rem(116), height: rem(140)), imageRadius: rem(10), imageSpacing: rem(8), padding: UIEdgeInsets(top: rem(0), left: rem(10), bottom: rem(0), right: rem(10)))
+        setup(imageSize: CGSize(width: rem(116), height: rem(140)), imageRadius: rem(10), imageSpacing: rem(8), contentInsets: UIEdgeInsets(top: rem(0), left: rem(10), bottom: rem(0), right: rem(10)))
     }
     
     func setup(modelArray: [PlazaOUserInfoItemModel]) {

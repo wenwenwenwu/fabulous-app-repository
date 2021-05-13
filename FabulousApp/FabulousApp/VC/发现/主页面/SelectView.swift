@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SelectViewDelegate: AnyObject {
-    func selectViewDidTapButton(_ currentIndex: Int)
+    func selectViewDidTapButton(_ currentTitleIndex: Int)
 }
 
 class SelectView: UIView {
@@ -18,7 +18,6 @@ class SelectView: UIView {
     init(titleArray: [String]) {
         self.titleArray = titleArray
         super.init(frame: .zero)
-        backgroundColor = WHITE_FFFFFF
         addSubview(scrollView)
         for item in titleArray {
             let button = createButton(title: item)
@@ -34,9 +33,6 @@ class SelectView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        scrollView.snp.makeConstraints { (make) in
-            make.top.equalTo(rem(40))
-        }
         scrollView.frame = CGRect(x: scrollViewLeft, y: 0, width: scrollViewWidth, height: height)
         scrollView.contentSize = CGSize(width: scrollViewContentWidth, height: height)
         var buttonLeft: CGFloat = 0
@@ -44,45 +40,50 @@ class SelectView: UIView {
             item.frame = CGRect(x: buttonLeft, y: 0, width: buttonWidth, height: height)
             buttonLeft += buttonWidth
         }
-        slideView.frame = CGRect(x: buttonArray[currentIndex].x, y: height - rem(4), width: buttonWidth, height: rem(4))
+        slideView.frame = CGRect(x: buttonArray[currentTitleIndex].x, y: height - rem(4), width: buttonWidth, height: rem(4))
     }
     
     //MARK: - Action
-    @objc func chanelButtonAction(_ sender: UIButton) {
+    @objc func buttonAction(_ sender: UIButton) {
+        self.currentTitleIndex = sender.tag //titleIndex
+        setupSelectStatus()
+        //触发PageView滑动
+        delegate?.selectViewDidTapButton(currentTitleIndex)
+    }
+    
+    //响应PageView滑动
+    func select(_ currentTitleIndex: Int) {
+        self.currentTitleIndex = currentTitleIndex
+        setupSelectStatus()
+    }
+    
+    //MARK: - Setup
+    func setupSelectStatus() {
         //重新选中
         for item in buttonArray {
             item.isSelected = false
         }
-        sender.isSelected = true
+        buttonArray[currentTitleIndex].isSelected = true
         //滑动滑块
-        currentIndex = sender.tag
         UIView.animate(withDuration: 0.3) {
             self.layoutSubviews()
         }
-        delegate?.selectViewDidTapButton(currentIndex)
-    }
-    
-    //MARK: - Setup
-    func setup(_ currentIndex: Int) {
-        self.currentIndex = currentIndex
-        let button = buttonArray[currentIndex]
-        button.sendActions(for: UIControl.Event.touchUpInside)
     }
     
     //MARK: - Method
     func createButton(title: String) -> UIButton {
-        let button = CreateTool.normalButtonWith(font: FONT_14, titleColor: BLACK_000000, title: title, target: self, action: #selector(chanelButtonAction(_:)))
-        let index = titleArray.firstIndex(of: title)!
-        button.setTitleColor(UIColor.systemBlue, for: .selected)
-        button.isSelected = index == currentIndex
-        button.tag = index
+        let button = CreateTool.normalButtonWith(font: FONT_18_BOLD, titleColor: BLACK_000000, title: title, target: self, action: #selector(buttonAction(_:)))
+        let titleIndex = titleArray.firstIndex(of: title)!
+        button.setTitleColor(UIColor.systemPink, for: .selected)
+        button.isSelected = titleIndex == currentTitleIndex
+        button.tag = titleIndex
         return button
     }
         
     //MARK: - Component
     lazy var scrollView = CreateTool.scrollViewWith(backgroundColor: WHITE_FFFFFF, showsHorizontalScrollIndicator: false)
     
-    lazy var slideView = CreateTool.viewWith(color: UIColor.systemBlue)
+    lazy var slideView = CreateTool.viewWith(color: UIColor.systemPink)
     
     weak var delegate: SelectViewDelegate?
         
@@ -102,7 +103,7 @@ class SelectView: UIView {
         scrollViewContentWidth > SCREEN_WIDTH ? SCREEN_WIDTH : scrollViewContentWidth
     }
     
-    var currentIndex = 0
+    var currentTitleIndex = 0
     
     var buttonArray: [UIButton] = []
     

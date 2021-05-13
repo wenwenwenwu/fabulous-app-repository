@@ -57,7 +57,7 @@ class MineVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     //MARK: - Component
     lazy var tableView: UITableView = {
         let tableView = CreateTool.tableViewWith(style: .plain, backgroundColor: UIColor.white, dataSource: self, delegate: self)
-        tableView.contentInsetAdjustmentBehavior = .never//从状态栏顶部开始布局
+//        tableView.contentInsetAdjustmentBehavior = .never//从状态栏顶部开始布局
         //设置tableHeaderView
         tableView.tableHeaderView = zoomHeader
         tableView.tableHeaderView?.height = zoomHeader.backImageSize.height

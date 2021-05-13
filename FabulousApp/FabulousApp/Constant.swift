@@ -32,6 +32,7 @@ let FONT_10 = UIFont.systemFont(ofSize: rem(10))
 let FONT_11_BOLD = UIFont.systemFont(ofSize: rem(11), weight: .bold)
 let FONT_12 = UIFont.systemFont(ofSize: rem(12))
 let FONT_14 = UIFont.systemFont(ofSize: rem(14))
+let FONT_18_BOLD = UIFont.systemFont(ofSize: rem(18), weight: .bold)
 
 
 //MARK: - 通知常量

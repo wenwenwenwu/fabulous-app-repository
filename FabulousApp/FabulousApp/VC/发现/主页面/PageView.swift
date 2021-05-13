@@ -47,15 +47,18 @@ class PageView: UIView, UIScrollViewDelegate {
     }
     
     //MARK: - UIScrollViewDelegate
+    //触发selectView选中
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let currentPageIndex = Int(scrollView.contentOffset.x/scrollView.width)
-        delegate?.pageViewDidChangePage(Int(currentPageIndex))
+        currentPageIndex = Int(scrollView.contentOffset.x/scrollView.width)
+        delegate?.pageViewDidChangePage(currentPageIndex)
     }
     
     //MARK: - Action
-    func page(_ currentPageIndex: Int) {
+    //响应selectView选中
+    func select(_ currentPageIndex: Int) {
+        self.currentPageIndex = currentPageIndex
         UIView.animate(withDuration: 0.3) {
-            self.scrollView.contentOffset = CGPoint.init(x: Int(SCREEN_WIDTH) * currentPageIndex, y: 0)
+            self.scrollView.contentOffset = CGPoint.init(x: Int(SCREEN_WIDTH) * self.currentPageIndex, y: 0)
         }
     }
     
@@ -78,5 +81,8 @@ class PageView: UIView, UIScrollViewDelegate {
     var ownerVC: UIViewController
     
     var pageVCArray = [PageVCProtocol]()
+    
+    var currentPageIndex = 0
+    
     
 }

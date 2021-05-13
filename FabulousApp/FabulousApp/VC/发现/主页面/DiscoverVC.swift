@@ -32,8 +32,9 @@ class DiscoverVC: UIViewController, PageViewDelegate, SelectViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         selectView.snp.makeConstraints { (make) in
-            make.top.left.right.equalToSuperview()
-            make.height.equalTo(rem(80))
+            make.left.right.equalToSuperview()
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.height.equalTo(rem(60))
         }
         pageView.snp.makeConstraints { (make) in
             make.top.equalTo(selectView.snp.bottom)
@@ -43,12 +44,12 @@ class DiscoverVC: UIViewController, PageViewDelegate, SelectViewDelegate {
     
     //MARK: - PageViewDelegate
     func pageViewDidChangePage(_ currentPageIndex: Int) {
-        selectView.setup(currentPageIndex)
+        selectView.select(currentPageIndex)
     }
     
     //MARK: - SelectViewDelegate
-    func selectViewDidTapButton(_ currentIndex: Int) {
-        pageView.page(currentIndex)
+    func selectViewDidTapButton(_ currentTitleIndex: Int) {
+        pageView.select(currentTitleIndex)
     }
     
     //MARK: - Component

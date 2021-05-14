@@ -60,6 +60,10 @@ class DiscoverVC: UIViewController, PageViewDelegate, SelectViewDelegate {
     }
     
     //MARK: - PageViewDelegate
+    func pageViewDidScroll(_ scrollRatio: CGFloat) {
+        selectView.moveSliderBar(scrollRatio)
+    }
+    
     func pageViewDidChangePage(_ currentPageIndex: Int) {
         selectView.select(currentPageIndex)
     }

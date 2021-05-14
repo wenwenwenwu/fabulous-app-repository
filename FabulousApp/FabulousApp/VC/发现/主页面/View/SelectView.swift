@@ -24,7 +24,7 @@ class SelectView: UIView {
             scrollView.addSubview(button)
             buttonArray.append(button)
         }
-        scrollView.addSubview(slideView)
+        scrollView.addSubview(slideBar)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -40,50 +40,53 @@ class SelectView: UIView {
             item.frame = CGRect(x: buttonLeft, y: 0, width: buttonWidth, height: height)
             buttonLeft += buttonWidth
         }
-        slideView.frame = CGRect(x: buttonArray[currentTitleIndex].x, y: height - rem(4), width: buttonWidth, height: rem(4))
+        slideBar.frame = CGRect(x: buttonArray[currentTitleIndex].x, y: height - rem(4), width: buttonWidth, height: rem(4))
     }
     
     //MARK: - Action
-    @objc func buttonAction(_ sender: UIButton) {
+    @objc func tapButtonAction(_ sender: UIButton) {
         self.currentTitleIndex = sender.tag //titleIndex
-        setupSelectStatus()
-        //触发PageView滑动
+        selectButton(withSliderBarMove: true)
+        //触发PageView翻页
         delegate?.selectViewDidTapButton(currentTitleIndex)
     }
     
-    //响应PageView滑动
+    //响应PageView翻页
     func select(_ currentTitleIndex: Int) {
         self.currentTitleIndex = currentTitleIndex
-        setupSelectStatus()
+        selectButton(withSliderBarMove: false)
     }
     
-    //MARK: - Setup
-    func setupSelectStatus() {
-        //重新选中
-        for item in buttonArray {
-            item.isSelected = false
-        }
-        buttonArray[currentTitleIndex].isSelected = true
-        //滑动滑块
-        UIView.animate(withDuration: 0.3) {
-            self.layoutSubviews()
-        }
+    //响应PageView滑动
+    func moveSliderBar(_ scrollRatio: CGFloat) {
+        slideBar.x = scrollViewContentWidth * scrollRatio
     }
-    
+        
     //MARK: - Method
     func createButton(title: String) -> UIButton {
-        let button = CreateTool.normalButtonWith(font: FONT_18_BOLD, titleColor: BLACK_000000, title: title, target: self, action: #selector(buttonAction(_:)))
+        let button = CreateTool.normalButtonWith(font: FONT_18_BOLD, titleColor: BLACK_000000, title: title, target: self, action: #selector(tapButtonAction(_:)))
         let titleIndex = titleArray.firstIndex(of: title)!
         button.setTitleColor(UIColor.systemPink, for: .selected)
         button.isSelected = titleIndex == currentTitleIndex
         button.tag = titleIndex
         return button
     }
-        
+    
+    func selectButton(withSliderBarMove: Bool) {
+        for (index, item) in buttonArray.enumerated() {
+            item.isSelected = (index == currentTitleIndex)
+        }
+        if withSliderBarMove {
+            UIView.animate(withDuration: 0.3) { [unowned self] in
+                slideBar.frame = CGRect(x: buttonArray[currentTitleIndex].x, y: height - rem(4), width: buttonWidth, height: rem(4))
+            }
+        }
+    }
+    
     //MARK: - Component
     lazy var scrollView = CreateTool.scrollViewWith(backgroundColor: WHITE_FFFFFF, showsHorizontalScrollIndicator: false)
     
-    lazy var slideView = CreateTool.viewWith(color: UIColor.systemPink)
+    lazy var slideBar = CreateTool.viewWith(color: UIColor.systemPink)
     
     weak var delegate: SelectViewDelegate?
         

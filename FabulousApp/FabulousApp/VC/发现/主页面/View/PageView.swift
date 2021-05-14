@@ -14,6 +14,7 @@ protocol PageVCDelegate: UIViewController {
 
 protocol PageViewDelegate: AnyObject {
     func pageViewDidChangePage(_ currentPageIndex: Int)
+    func pageViewDidScroll(_ scrollRatio: CGFloat)
 }
 
 class PageView: UIView, UIScrollViewDelegate {
@@ -47,6 +48,11 @@ class PageView: UIView, UIScrollViewDelegate {
     }
     
     //MARK: - UIScrollViewDelegate
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let scrollRatio = scrollView.contentOffset.x / scrollView.contentSize.width        
+        delegate?.pageViewDidScroll(scrollRatio)
+    }
+    
     //触发selectView选中
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         currentPageIndex = Int(scrollView.contentOffset.x/scrollView.width)

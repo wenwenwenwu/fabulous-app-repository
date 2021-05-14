@@ -27,8 +27,8 @@ class DiscoverVC: UIViewController, PageViewDelegate, SelectViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(pageViewDidScrollUp), name: .SCROLL_UP, object: nil)
-        setupLayout(isUp: false)
+//        NotificationCenter.default.addObserver(self, selector: #selector(pageViewDidScrollUp), name: .SCROLL_UP, object: nil)
+//        setupLayout(isUp: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -36,24 +36,24 @@ class DiscoverVC: UIViewController, PageViewDelegate, SelectViewDelegate {
         navigationController?.isNavigationBarHidden = false
     }
     
-//    override func viewDidLayoutSubviews() {
-//        super.viewDidLayoutSubviews()
-//        searchView.snp.makeConstraints { (make) in
-//            make.height.equalTo(rem(60))
-//            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
-//            make.left.right.equalToSuperview()
-//        }
-//        selectView.snp.makeConstraints { (make) in
-//            make.left.right.equalToSuperview()
-//            make.top.equalTo(searchView.snp.bottom)
-//            make.height.equalTo(rem(40))
-//        }
-//        pageView.snp.makeConstraints { (make) in
-//            make.top.equalTo(selectView.snp.bottom)
-//            make.left.bottom.right.equalToSuperview()
-//        }
-//    }
-//
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        searchView.snp.makeConstraints { (make) in
+            make.height.equalTo(rem(60))
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+            make.left.right.equalToSuperview()
+        }
+        selectView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalTo(searchView.snp.bottom)
+            make.height.equalTo(rem(40))
+        }
+        pageView.snp.makeConstraints { (make) in
+            make.top.equalTo(selectView.snp.bottom)
+            make.left.bottom.right.equalToSuperview()
+        }
+    }
+
     deinit {
         NotificationCenter.default.removeObserver(self, name: .SCROLL_UP, object: nil)
 
@@ -75,48 +75,48 @@ class DiscoverVC: UIViewController, PageViewDelegate, SelectViewDelegate {
     
     //MARK: - Action
     @objc func pageViewDidScrollUp() {
-        setupLayout(isUp: true)
+//        setupLayout(isUp: true)
     }
     
     //MARK: - Setup
-    func setupLayout(isUp: Bool) {
-        if isUp {
-            UIView.animate(withDuration: 1) { [unowned self] in
-                searchView.snp.remakeConstraints { (make) in
-                    make.height.equalTo(rem(60))
-                    make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
-                    make.left.equalTo(selectView.scrollViewWidth)
-                    make.right.equalToSuperview()
-                }
-                selectView.snp.makeConstraints { (make) in
-                    make.left.top.equalToSuperview()
-                    make.right.equalTo(searchView.snp.left)
-                    make.height.equalTo(rem(60))
-                }
-                pageView.snp.makeConstraints { (make) in
-                    make.top.equalTo(selectView.snp.bottom)
-                    make.left.bottom.right.equalToSuperview()
-                }
-            }
-        } else {
-            UIView.animate(withDuration: 1) { [unowned self] in
-                searchView.snp.makeConstraints { (make) in
-                    make.height.equalTo(rem(60))
-                    make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
-                    make.left.right.equalToSuperview()
-                }
-                selectView.snp.makeConstraints { (make) in
-                    make.left.right.equalToSuperview()
-                    make.top.equalTo(searchView.snp.bottom)
-                    make.height.equalTo(rem(40))
-                }
-                pageView.snp.makeConstraints { (make) in
-                    make.top.equalTo(selectView.snp.bottom)
-                    make.left.bottom.right.equalToSuperview()
-                }
-            }
-        }
-    }
+//    func setupLayout(isUp: Bool) {
+//        if isUp {
+//            UIView.animate(withDuration: 1) { [unowned self] in
+//                searchView.snp.remakeConstraints { (make) in
+//                    make.height.equalTo(rem(60))
+//                    make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+//                    make.left.equalTo(selectView.scrollViewWidth)
+//                    make.right.equalToSuperview()
+//                }
+//                selectView.snp.makeConstraints { (make) in
+//                    make.left.top.equalToSuperview()
+//                    make.right.equalTo(searchView.snp.left)
+//                    make.height.equalTo(rem(60))
+//                }
+//                pageView.snp.makeConstraints { (make) in
+//                    make.top.equalTo(selectView.snp.bottom)
+//                    make.left.bottom.right.equalToSuperview()
+//                }
+//            }
+//        } else {
+//            UIView.animate(withDuration: 1) { [unowned self] in
+//                searchView.snp.makeConstraints { (make) in
+//                    make.height.equalTo(rem(60))
+//                    make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top)
+//                    make.left.right.equalToSuperview()
+//                }
+//                selectView.snp.makeConstraints { (make) in
+//                    make.left.right.equalToSuperview()
+//                    make.top.equalTo(searchView.snp.bottom)
+//                    make.height.equalTo(rem(40))
+//                }
+//                pageView.snp.makeConstraints { (make) in
+//                    make.top.equalTo(selectView.snp.bottom)
+//                    make.left.bottom.right.equalToSuperview()
+//                }
+//            }
+//        }
+//    }
     
     
     //MARK: - Component

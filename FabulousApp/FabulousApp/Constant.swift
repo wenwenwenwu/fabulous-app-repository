@@ -19,6 +19,7 @@ let SCREEN_BOUNDS: CGRect = UIScreen.main.bounds
 let SCREEN_WIDTH = UIScreen.main.bounds.size.width
 let SCREEN_HEIGHT: CGFloat = UIScreen.main.bounds.size.height
 
+
 //MARK: - 颜色常量
 let WHITE_FFFFFF = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
 let GRAY_F0F0F0 = #colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1)

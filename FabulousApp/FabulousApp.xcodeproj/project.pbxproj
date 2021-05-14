@@ -39,7 +39,7 @@
 		5B03507C264638CE0005ECFC /* LoginInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B03507B264638CE0005ECFC /* LoginInfoModel.swift */; };
 		5B035087264647760005ECFC /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B035086264647760005ECFC /* TabBarVC.swift */; };
 		5B035089264657170005ECFC /* MineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B035088264657170005ECFC /* MineVC.swift */; };
-		5B03508B264658B50005ECFC /* ZoomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B03508A264658B50005ECFC /* ZoomHeader.swift */; };
+		5B03508B264658B50005ECFC /* MineZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B03508A264658B50005ECFC /* MineZoomView.swift */; };
 		5B092BF7264B82120007AA56 /* PlazaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B092BF6264B82120007AA56 /* PlazaModel.swift */; };
 		5B092BF9264B9E9C0007AA56 /* PlazaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B092BF8264B9E9C0007AA56 /* PlazaVC.swift */; };
 		5B092BFD264BA3B00007AA56 /* PlazaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B092BFC264BA3B00007AA56 /* PlazaCell.swift */; };
@@ -47,6 +47,7 @@
 		5B092C01264BBD9C0007AA56 /* PlazaTypeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B092C00264BBD9C0007AA56 /* PlazaTypeCellModel.swift */; };
 		5B092C06264BC5F00007AA56 /* PlazaCell_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B092C05264BC5F00007AA56 /* PlazaCell_User.swift */; };
 		5B092C09264BCEFC0007AA56 /* PlazaSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B092C08264BCEFC0007AA56 /* PlazaSectionHeader.swift */; };
+		5B1A6406264E4223006A31DF /* MineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1A6405264E4223006A31DF /* MineHeaderView.swift */; };
 		5B32F2902648C8D400E4D367 /* MomentItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F28F2648C8D400E4D367 /* MomentItemModel.swift */; };
 		5B32F2922648CCA600E4D367 /* MomentParaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F2912648CCA600E4D367 /* MomentParaModel.swift */; };
 		5B32F2962648D15400E4D367 /* MomentListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B32F2952648D15400E4D367 /* MomentListVC.swift */; };
@@ -64,6 +65,7 @@
 		5BA8F7122646234900AE46ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BA8F7102646234900AE46ED /* LaunchScreen.storyboard */; };
 		5BA8F71D2646234A00AE46ED /* FabulousAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F71C2646234A00AE46ED /* FabulousAppTests.swift */; };
 		5BA8F7282646234A00AE46ED /* FabulousAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F7272646234A00AE46ED /* FabulousAppUITests.swift */; };
+		5BC9A5D0264E6A8A00FE5709 /* MineNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC9A5CF264E6A8A00FE5709 /* MineNavBar.swift */; };
 		B978000602A2CD5A5269D92F /* Pods_FabulousApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2DFBDCA160EABC141E624A /* Pods_FabulousApp.framework */; };
 		FA1B1A18E9EA08CC01D75791 /* Pods_FabulousAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0CB4B4B370ACFF9F2736F9 /* Pods_FabulousAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -123,7 +125,7 @@
 		5B03507B264638CE0005ECFC /* LoginInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInfoModel.swift; sourceTree = "<group>"; };
 		5B035086264647760005ECFC /* TabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		5B035088264657170005ECFC /* MineVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineVC.swift; sourceTree = "<group>"; };
-		5B03508A264658B50005ECFC /* ZoomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomHeader.swift; sourceTree = "<group>"; };
+		5B03508A264658B50005ECFC /* MineZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineZoomView.swift; sourceTree = "<group>"; };
 		5B092BF6264B82120007AA56 /* PlazaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlazaModel.swift; sourceTree = "<group>"; };
 		5B092BF8264B9E9C0007AA56 /* PlazaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlazaVC.swift; sourceTree = "<group>"; };
 		5B092BFC264BA3B00007AA56 /* PlazaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlazaCell.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 		5B092C00264BBD9C0007AA56 /* PlazaTypeCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlazaTypeCellModel.swift; sourceTree = "<group>"; };
 		5B092C05264BC5F00007AA56 /* PlazaCell_User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlazaCell_User.swift; sourceTree = "<group>"; };
 		5B092C08264BCEFC0007AA56 /* PlazaSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlazaSectionHeader.swift; sourceTree = "<group>"; };
+		5B1A6405264E4223006A31DF /* MineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineHeaderView.swift; sourceTree = "<group>"; };
 		5B32F28F2648C8D400E4D367 /* MomentItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentItemModel.swift; sourceTree = "<group>"; };
 		5B32F2912648CCA600E4D367 /* MomentParaModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentParaModel.swift; sourceTree = "<group>"; };
 		5B32F2952648D15400E4D367 /* MomentListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentListVC.swift; sourceTree = "<group>"; };
@@ -154,6 +157,7 @@
 		5BA8F7232646234A00AE46ED /* FabulousAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FabulousAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA8F7272646234A00AE46ED /* FabulousAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FabulousAppUITests.swift; sourceTree = "<group>"; };
 		5BA8F7292646234A00AE46ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BC9A5CF264E6A8A00FE5709 /* MineNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineNavBar.swift; sourceTree = "<group>"; };
 		6B2DFBDCA160EABC141E624A /* Pods_FabulousApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FabulousApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D3508B34CBEF576309C9AF0 /* Pods-FabulousApp-FabulousAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FabulousApp-FabulousAppUITests.release.xcconfig"; path = "Target Support Files/Pods-FabulousApp-FabulousAppUITests/Pods-FabulousApp-FabulousAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9B0CB4B4B370ACFF9F2736F9 /* Pods_FabulousAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FabulousAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -403,11 +407,21 @@
 			path = PlazaCell;
 			sourceTree = "<group>";
 		};
+		5B1A6402264E2168006A31DF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5B03508A264658B50005ECFC /* MineZoomView.swift */,
+				5BC9A5CF264E6A8A00FE5709 /* MineNavBar.swift */,
+				5B1A6405264E4223006A31DF /* MineHeaderView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5B32F2932648D12900E4D367 /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
 				5B035088264657170005ECFC /* MineVC.swift */,
-				5B03508A264658B50005ECFC /* ZoomHeader.swift */,
+				5B1A6402264E2168006A31DF /* View */,
 			);
 			path = "我的";
 			sourceTree = "<group>";
@@ -776,6 +790,8 @@
 				5B035067264630E40005ECFC /* RawPagingResponseModel.swift in Sources */,
 				5B035066264630E40005ECFC /* PagingResponseModel.swift in Sources */,
 				5B3D2300264D168700B9D742 /* SearchView.swift in Sources */,
+				5B1A6406264E4223006A31DF /* MineHeaderView.swift in Sources */,
+				5BC9A5D0264E6A8A00FE5709 /* MineNavBar.swift in Sources */,
 				5B03505E264630E40005ECFC /* ApplicationTool.swift in Sources */,
 				5B092C09264BCEFC0007AA56 /* PlazaSectionHeader.swift in Sources */,
 				5B03502F264630E40005ECFC /* BlankRequestModel.swift in Sources */,
@@ -809,7 +825,7 @@
 				5B3D22FC264CCCA100B9D742 /* DiscoverVC.swift in Sources */,
 				5B034F9F264630630005ECFC /* Configuration.swift in Sources */,
 				5B035058264630E40005ECFC /* UIView.swift in Sources */,
-				5B03508B264658B50005ECFC /* ZoomHeader.swift in Sources */,
+				5B03508B264658B50005ECFC /* MineZoomView.swift in Sources */,
 				5B035065264630E40005ECFC /* PagingTool.swift in Sources */,
 				5B035061264630E40005ECFC /* ResponseDataModel.swift in Sources */,
 				5B42E06C2649161800618BE6 /* WaterfallLayout.swift in Sources */,

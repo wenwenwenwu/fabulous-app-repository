@@ -22,7 +22,6 @@ class MomentListVC: UIViewController, PageVCDelegate, UICollectionViewDataSource
         super.viewDidLoad()
         view.addSubview(collectionView)
         view.addSubview(blankView)
-        title = "发现"
         reloadData()
     }
     

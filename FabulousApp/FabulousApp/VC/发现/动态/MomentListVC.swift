@@ -120,9 +120,9 @@ class MomentListVC: UIViewController, PageVCDelegate, UICollectionViewDataSource
                 if let coverURL = item.cover.realURL {
                     imageURLArray.append(coverURL)
                 }
-                if let avatarURL = item.user.avatarURL {
-                    imageURLArray.append(avatarURL)
-                }
+//                if let avatarURL = item.user.avatarURL {
+//                    imageURLArray.append(avatarURL)
+//                }
             }
             let prefetcher = ImagePrefetcher.init(urls: imageURLArray) { _,_,_  in
                     completion() //框架已经做了线程转换

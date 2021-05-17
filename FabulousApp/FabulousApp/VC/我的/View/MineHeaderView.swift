@@ -32,7 +32,7 @@ class MineHeaderView: UIView {
     //MARK: - Setup
     func setup(offsetY: CGFloat,realHeaderHeight: CGFloat) {
         if offsetY > 0 { //上滑
-            heartIconView.alpha = (realHeaderHeight - abs(offsetY)) / realHeaderHeight
+            heartIconView.alpha = ((realHeaderHeight - abs(offsetY)) / realHeaderHeight )
         }
     }
     

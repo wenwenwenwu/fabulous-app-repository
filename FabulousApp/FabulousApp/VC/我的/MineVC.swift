@@ -12,10 +12,10 @@ class MineVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(zoomBackView)
-        view.addSubview(navBar)
-        view.addSubview(tableView)
-        view.addSubview(backIconView)
+        view.addSubview(zoomBackgroundkView) //包含背景图片，可以
+        view.addSubview(navBar) //透明
+        view.addSubview(tableView) //header透明，高度是图片高度-navBar高度
+        view.addSubview(backButton)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,7 +31,7 @@ class MineVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         NAV_BAR_HEIGHT = view.safeAreaInsets.top + navigationController!.navigationBar.height //此处取到的值才准
-        zoomBackView.frame = CGRect(origin: .zero, size: zoomBackView.backImageSize)
+        zoomBackgroundkView.frame = CGRect(origin: .zero, size: zoomBackgroundkView.backImageSize)
         navBar.snp.makeConstraints { (make) in
             make.left.top.right.equalToSuperview()
             make.height.equalTo(NAV_BAR_HEIGHT)
@@ -40,8 +40,8 @@ class MineVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             make.top.equalTo(navBar.snp.bottom)
             make.left.bottom.right.equalToSuperview()
         }
-        tableView.tableHeaderView?.height = zoomBackView.backImageSize.height - NAV_BAR_HEIGHT
-        backIconView.snp.makeConstraints { (make) in
+        tableView.tableHeaderView?.height = zoomBackgroundkView.backImageSize.height - NAV_BAR_HEIGHT
+        backButton.snp.makeConstraints { (make) in
             make.size.equalTo(CGSize(width: rem(19), height: rem(18)))
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.left.equalTo(rem(10))
@@ -50,7 +50,7 @@ class MineVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     //MARK: - UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 15
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,16 +68,16 @@ class MineVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         //tableView下拉时tableHeaderView会变长,offsetY为负;上拉时offsetY为正
         let offsetY = scrollView.contentOffset.y
-        if offsetY < zoomBackView.backImageSize.height - NAV_BAR_HEIGHT {
-            let realHeaderHeight = zoomBackView.backImageSize.height - NAV_BAR_HEIGHT
-            zoomBackView.setup(offsetY: offsetY, realHeaderHeight: realHeaderHeight)
+        if offsetY < zoomBackgroundkView.backImageSize.height - NAV_BAR_HEIGHT {
+            let realHeaderHeight = zoomBackgroundkView.backImageSize.height - NAV_BAR_HEIGHT
+            zoomBackgroundkView.setup(offsetY: offsetY, realHeaderHeight: realHeaderHeight)
             navBar.setup(offsetY: offsetY, realHeaderHeight: realHeaderHeight)
             headerView.setup(offsetY: offsetY, realHeaderHeight: realHeaderHeight)
         }
     }
     
     //MARK: - Component
-    lazy var zoomBackView = MineZoomView(backImage: #imageLiteral(resourceName: "header_1"))
+    lazy var zoomBackgroundkView = MineZoomView(backImage: #imageLiteral(resourceName: "header_1"))
     
     lazy var navBar = MineNavBar()
     
@@ -92,7 +92,7 @@ class MineVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     lazy var headerView = MineHeaderView()
     
-    lazy var backIconView = CreateTool.imageViewWith(image: #imageLiteral(resourceName: "arrow-left"))
+    lazy var backButton = CreateTool.imageViewWith(image: #imageLiteral(resourceName: "arrow-left"))
     
     var NAV_BAR_HEIGHT: CGFloat = 0
     

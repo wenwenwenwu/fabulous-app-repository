@@ -13,7 +13,7 @@ struct MomentItemModel: Codable {
     var title: String?
     var content: String?
     var cover: MomentItemCoverItemModel
-    var user: MomentItemUserModel
+//    var user: MomentItemUserModel
     
 
 }

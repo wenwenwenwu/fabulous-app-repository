@@ -1,5 +1,5 @@
 //
-//  SelectViewNew.swift
+//  CarvedSelectView.swift
 //  FabulousApp
 //
 //  Created by 邬文文 on 2021/5/17.
@@ -11,7 +11,7 @@ protocol SelectViewNewDelegate: AnyObject {
     func selectViewDidTapButton(_ currentTitleIndex: Int)
 }
 
-class SelectViewNew: UIView {
+class CarvedSelectView: UIView {
 
     //MARK: - Init
     init(titleArray: [String]) {
@@ -33,6 +33,7 @@ class SelectViewNew: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        //以下代码只调用一次
         scrollView.frame = CGRect(x: scrollViewLeft, y: 0, width: scrollViewWidth, height: height)
         scrollView.contentSize = CGSize(width: scrollViewContentWidth - rem(CGFloat(buttonArray.count)), height: height)
         var buttonLeft: CGFloat = 0
@@ -41,14 +42,15 @@ class SelectViewNew: UIView {
             buttonLeft += buttonWidth - rem(1)
         }
         let sliderBarTop = (height - sliderBarHeight) / 2
-        bottomSliderBar.frame = CGRect(x: buttonArray[currentTitleIndex].x, y: sliderBarTop, width: buttonWidth, height: sliderBarHeight)
-        topSlideBar.frame = CGRect(x: buttonArray[currentTitleIndex].x, y: sliderBarTop, width: buttonWidth, height: sliderBarHeight)
+        let sliderBarLeft = buttonArray[currentTitleIndex].x
+        bottomSliderBar.frame = CGRect(x: sliderBarLeft, y: sliderBarTop, width: buttonWidth, height: sliderBarHeight)
+        topSlideBar.frame = CGRect(x: sliderBarLeft, y: sliderBarTop, width: buttonWidth, height: sliderBarHeight)
     }
     
     //MARK: - Action
     @objc func tapButtonAction(_ sender: UITapGestureRecognizer) {
         self.currentTitleIndex = sender.view!.tag //titleIndex
-        selectButton(withSliderBarMove: true)
+        selectButton()
         //触发PageView翻页
         delegate?.selectViewDidTapButton(currentTitleIndex)
     }
@@ -56,13 +58,14 @@ class SelectViewNew: UIView {
     //响应PageView翻页
     func select(_ currentTitleIndex: Int) {
         self.currentTitleIndex = currentTitleIndex
-        selectButton(withSliderBarMove: false)
+        selectButton()
     }
     
     //响应PageView滑动
     func moveSliderBar(_ scrollRatio: CGFloat) {
-        bottomSliderBar.x = scrollViewContentWidth * scrollRatio
-        topSlideBar.x = scrollViewContentWidth * scrollRatio
+        let moveX = scrollViewContentWidth * scrollRatio - rem(1) * CGFloat(currentTitleIndex)
+        bottomSliderBar.x = moveX
+        topSlideBar.x = moveX
     }
         
     //MARK: - Method
@@ -77,18 +80,19 @@ class SelectViewNew: UIView {
         return labelButton
     }
     
-    func selectButton(withSliderBarMove: Bool) {
+    func selectButton() {
         let currentX = buttonArray[currentTitleIndex].x - scrollView.contentOffset.x //选中button目前在屏幕中的X
         let expetionX = (SCREEN_WIDTH - buttonWidth) / 2 //期待选中button在屏幕中的X
         let move = currentX - expetionX //scrollView需要滚动的距离
         var contentOffsetX = scrollView.contentOffset.x + move
-        if contentOffsetX <= 0 { contentOffsetX = 0 } //不允许右移
-        if contentOffsetX >= scrollView.contentSize.width - SCREEN_WIDTH { //
-            contentOffsetX = scrollView.contentSize.width - SCREEN_WIDTH
+        if contentOffsetX <= 0 { contentOffsetX = 0 } //右移的尽头
+        if contentOffsetX >= scrollView.contentSize.width - SCREEN_WIDTH {
+            contentOffsetX = scrollView.contentSize.width - SCREEN_WIDTH //左移的尽头
         }
         UIView.animate(withDuration: 0.3) { [unowned self] in
             scrollView.contentOffset = CGPoint(x: contentOffsetX, y: 0)
-        }        
+            layoutSubviews()
+        }
 
     }
     

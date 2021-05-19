@@ -77,11 +77,11 @@ class LiveVC: UIViewController, PageViewDelegate, SelectViewNewDelegate, SelectV
     //MARK: - Component
     lazy var searchView = SearchView()
     
-    lazy var pageView = PageView(ownerVC: self, pageVCArray: [ViewController(), ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController()])
+    lazy var pageView = PageView(ownerVC: self, pageVCArray: [ViewController(), ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController()])
     
     
     
-    lazy var selectView = SelectViewNew(titleArray: ["第一天","第二天","第三天","第四天","第五天","第六天","第七天","第八天","第九天","第十天","第十一天","第十二天","第十三天","第十四天","第十五天","第十六天","第十七天","第十八天","第十九天","第二十天","第二十一天","第二十二天"])
+    lazy var selectView = CarvedSelectView(titleArray: ["第一天","第二天","第三天","第四天","第五天","第六天","第七天","第八天","第九天","第十天"])
     
 }
 

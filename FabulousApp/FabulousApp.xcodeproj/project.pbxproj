@@ -59,7 +59,7 @@
 		5B42E06C2649161800618BE6 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42E06B2649161800618BE6 /* WaterfallLayout.swift */; };
 		5B4898A12652017D0042BBEA /* CarvedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4898A02652017D0042BBEA /* CarvedLabel.swift */; };
 		5B4898A426520E8D0042BBEA /* LiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4898A326520E8D0042BBEA /* LiveVC.swift */; };
-		5B4898A62652108D0042BBEA /* SelectViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4898A52652108D0042BBEA /* SelectViewNew.swift */; };
+		5B4898A62652108D0042BBEA /* CarvedSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4898A52652108D0042BBEA /* CarvedSelectView.swift */; };
 		5B972A85264A6B4100CB72F9 /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B972A84264A6B4100CB72F9 /* BlankView.swift */; };
 		5BA8F7062646234800AE46ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F7052646234800AE46ED /* AppDelegate.swift */; };
 		5BA8F7082646234800AE46ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F7072646234800AE46ED /* SceneDelegate.swift */; };
@@ -148,7 +148,7 @@
 		5B42E06B2649161800618BE6 /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
 		5B4898A02652017D0042BBEA /* CarvedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarvedLabel.swift; sourceTree = "<group>"; };
 		5B4898A326520E8D0042BBEA /* LiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveVC.swift; sourceTree = "<group>"; };
-		5B4898A52652108D0042BBEA /* SelectViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewNew.swift; sourceTree = "<group>"; };
+		5B4898A52652108D0042BBEA /* CarvedSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarvedSelectView.swift; sourceTree = "<group>"; };
 		5B972A84264A6B4100CB72F9 /* BlankView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		5BA8F7022646234800AE46ED /* FabulousApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FabulousApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA8F7052646234800AE46ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -465,7 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				5B4898A326520E8D0042BBEA /* LiveVC.swift */,
-				5B4898A52652108D0042BBEA /* SelectViewNew.swift */,
+				5B4898A52652108D0042BBEA /* CarvedSelectView.swift */,
 				5B4898A02652017D0042BBEA /* CarvedLabel.swift */,
 			);
 			path = "直播";
@@ -828,7 +828,7 @@
 				5B092BF7264B82120007AA56 /* PlazaModel.swift in Sources */,
 				5B035087264647760005ECFC /* TabBarVC.swift in Sources */,
 				5B972A85264A6B4100CB72F9 /* BlankView.swift in Sources */,
-				5B4898A62652108D0042BBEA /* SelectViewNew.swift in Sources */,
+				5B4898A62652108D0042BBEA /* CarvedSelectView.swift in Sources */,
 				5B034FA0264630630005ECFC /* Constant.swift in Sources */,
 				5B0350772646381D0005ECFC /* MainVC.swift in Sources */,
 				5B42E0682649067700618BE6 /* MomentCell.swift in Sources */,

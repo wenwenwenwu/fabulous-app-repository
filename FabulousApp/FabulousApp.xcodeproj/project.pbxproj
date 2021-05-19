@@ -57,6 +57,9 @@
 		5B3D2300264D168700B9D742 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3D22FF264D168700B9D742 /* SearchView.swift */; };
 		5B42E0682649067700618BE6 /* MomentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42E0672649067700618BE6 /* MomentCell.swift */; };
 		5B42E06C2649161800618BE6 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B42E06B2649161800618BE6 /* WaterfallLayout.swift */; };
+		5B4898A12652017D0042BBEA /* CarvedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4898A02652017D0042BBEA /* CarvedLabel.swift */; };
+		5B4898A426520E8D0042BBEA /* LiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4898A326520E8D0042BBEA /* LiveVC.swift */; };
+		5B4898A62652108D0042BBEA /* SelectViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B4898A52652108D0042BBEA /* SelectViewNew.swift */; };
 		5B972A85264A6B4100CB72F9 /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B972A84264A6B4100CB72F9 /* BlankView.swift */; };
 		5BA8F7062646234800AE46ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F7052646234800AE46ED /* AppDelegate.swift */; };
 		5BA8F7082646234800AE46ED /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F7072646234800AE46ED /* SceneDelegate.swift */; };
@@ -143,6 +146,9 @@
 		5B3D22FF264D168700B9D742 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		5B42E0672649067700618BE6 /* MomentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MomentCell.swift; sourceTree = "<group>"; };
 		5B42E06B2649161800618BE6 /* WaterfallLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallLayout.swift; sourceTree = "<group>"; };
+		5B4898A02652017D0042BBEA /* CarvedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarvedLabel.swift; sourceTree = "<group>"; };
+		5B4898A326520E8D0042BBEA /* LiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveVC.swift; sourceTree = "<group>"; };
+		5B4898A52652108D0042BBEA /* SelectViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewNew.swift; sourceTree = "<group>"; };
 		5B972A84264A6B4100CB72F9 /* BlankView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
 		5BA8F7022646234800AE46ED /* FabulousApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FabulousApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BA8F7052646234800AE46ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -429,6 +435,7 @@
 		5B32F2942648D14300E4D367 /* 发现 */ = {
 			isa = PBXGroup;
 			children = (
+				5B4898A226520E780042BBEA /* 直播 */,
 				5B3D22FD264CCEA100B9D742 /* 主页面 */,
 				5B092BFB264BA3120007AA56 /* 广场 */,
 				5B092BFA264BA2ED0007AA56 /* 动态 */,
@@ -450,9 +457,18 @@
 			children = (
 				5B3D22FF264D168700B9D742 /* SearchView.swift */,
 				5B3D22F6264CB6CA00B9D742 /* SelectView.swift */,
-				5B3D22F5264CB6CA00B9D742 /* PageView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5B4898A226520E780042BBEA /* 直播 */ = {
+			isa = PBXGroup;
+			children = (
+				5B4898A326520E8D0042BBEA /* LiveVC.swift */,
+				5B4898A52652108D0042BBEA /* SelectViewNew.swift */,
+				5B4898A02652017D0042BBEA /* CarvedLabel.swift */,
+			);
+			path = "直播";
 			sourceTree = "<group>";
 		};
 		5B972A83264A5D2A00CB72F9 /* view */ = {
@@ -467,6 +483,7 @@
 		5B972A86264A6B4600CB72F9 /* CommonView */ = {
 			isa = PBXGroup;
 			children = (
+				5B3D22F5264CB6CA00B9D742 /* PageView.swift */,
 				5B972A84264A6B4100CB72F9 /* BlankView.swift */,
 			);
 			path = CommonView;
@@ -805,11 +822,13 @@
 				5B03506A264630E40005ECFC /* CommonTool.swift in Sources */,
 				5B092BF9264B9E9C0007AA56 /* PlazaVC.swift in Sources */,
 				5B3D22F8264CB6CA00B9D742 /* SelectView.swift in Sources */,
+				5B4898A426520E8D0042BBEA /* LiveVC.swift in Sources */,
 				5B3D22F7264CB6CA00B9D742 /* PageView.swift in Sources */,
 				5B03506C264630E40005ECFC /* PhotoPickerTool.swift in Sources */,
 				5B092BF7264B82120007AA56 /* PlazaModel.swift in Sources */,
 				5B035087264647760005ECFC /* TabBarVC.swift in Sources */,
 				5B972A85264A6B4100CB72F9 /* BlankView.swift in Sources */,
+				5B4898A62652108D0042BBEA /* SelectViewNew.swift in Sources */,
 				5B034FA0264630630005ECFC /* Constant.swift in Sources */,
 				5B0350772646381D0005ECFC /* MainVC.swift in Sources */,
 				5B42E0682649067700618BE6 /* MomentCell.swift in Sources */,
@@ -821,6 +840,7 @@
 				5B03507C264638CE0005ECFC /* LoginInfoModel.swift in Sources */,
 				5B0350782646381D0005ECFC /* NavigationVC.swift in Sources */,
 				5B03506E264630E40005ECFC /* AccountTool.swift in Sources */,
+				5B4898A12652017D0042BBEA /* CarvedLabel.swift in Sources */,
 				5B03506D264630E40005ECFC /* CountDownTool.swift in Sources */,
 				5B3D22FC264CCCA100B9D742 /* DiscoverVC.swift in Sources */,
 				5B034F9F264630630005ECFC /* Configuration.swift in Sources */,

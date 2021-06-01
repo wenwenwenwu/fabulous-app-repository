@@ -12,6 +12,10 @@ protocol PageVCDelegate: UIViewController {
     func pageVCDidAppear()
 }
 
+extension PageVCDelegate {
+    func pageVCDidAppear() {}
+}
+
 protocol PageViewDelegate: AnyObject {
     func pageViewDidChangePage(_ currentPageIndex: Int)
     func pageViewDidScroll(_ scrollRatio: CGFloat)

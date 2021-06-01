@@ -88,7 +88,7 @@ class CreateTool {
         return imageView
     }
     
-    static func textViewWith(font: UIFont, textColor: UIColor, backGroundColor: UIColor? = nil, delegate: UITextViewDelegate? = nil) -> UITextView {
+    static func textViewWith(font: UIFont? = nil, textColor: UIColor? = nil, backGroundColor: UIColor? = nil, delegate: UITextViewDelegate? = nil) -> UITextView {
         let textView = UITextView()
         textView.showsVerticalScrollIndicator = false
         textView.font = font

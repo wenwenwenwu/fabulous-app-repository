@@ -69,7 +69,11 @@
 		5BA8F71D2646234A00AE46ED /* FabulousAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F71C2646234A00AE46ED /* FabulousAppTests.swift */; };
 		5BA8F7282646234A00AE46ED /* FabulousAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA8F7272646234A00AE46ED /* FabulousAppUITests.swift */; };
 		5BC9A5D0264E6A8A00FE5709 /* MineNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC9A5CF264E6A8A00FE5709 /* MineNavBar.swift */; };
-		B978000602A2CD5A5269D92F /* Pods_FabulousApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2DFBDCA160EABC141E624A /* Pods_FabulousApp.framework */; };
+		5BD203EA26661FF7005B3666 /* Pods_FabulousApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2DFBDCA160EABC141E624A /* Pods_FabulousApp.framework */; };
+		5BD203EB26661FF7005B3666 /* Pods_FabulousApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B2DFBDCA160EABC141E624A /* Pods_FabulousApp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5BF1FF602664BF73003C53FC /* TextTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1FF5F2664BF73003C53FC /* TextTableVC.swift */; };
+		5BF1FF632664C1FD003C53FC /* FoldTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1FF622664C1FD003C53FC /* FoldTextCell.swift */; };
+		5BF1FF652664C4B9003C53FC /* TextModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF1FF642664C4B9003C53FC /* TextModel.swift */; };
 		FA1B1A18E9EA08CC01D75791 /* Pods_FabulousAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B0CB4B4B370ACFF9F2736F9 /* Pods_FabulousAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -89,6 +93,20 @@
 			remoteInfo = FabulousApp;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5BD203EC26661FF7005B3666 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				5BD203EB26661FF7005B3666 /* Pods_FabulousApp.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0414056699C514732F9B019D /* Pods-FabulousApp-FabulousAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FabulousApp-FabulousAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-FabulousApp-FabulousAppUITests/Pods-FabulousApp-FabulousAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +182,9 @@
 		5BA8F7272646234A00AE46ED /* FabulousAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FabulousAppUITests.swift; sourceTree = "<group>"; };
 		5BA8F7292646234A00AE46ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BC9A5CF264E6A8A00FE5709 /* MineNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineNavBar.swift; sourceTree = "<group>"; };
+		5BF1FF5F2664BF73003C53FC /* TextTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextTableVC.swift; sourceTree = "<group>"; };
+		5BF1FF622664C1FD003C53FC /* FoldTextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldTextCell.swift; sourceTree = "<group>"; };
+		5BF1FF642664C4B9003C53FC /* TextModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModel.swift; sourceTree = "<group>"; };
 		6B2DFBDCA160EABC141E624A /* Pods_FabulousApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FabulousApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D3508B34CBEF576309C9AF0 /* Pods-FabulousApp-FabulousAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FabulousApp-FabulousAppUITests.release.xcconfig"; path = "Target Support Files/Pods-FabulousApp-FabulousAppUITests/Pods-FabulousApp-FabulousAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9B0CB4B4B370ACFF9F2736F9 /* Pods_FabulousAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FabulousAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,7 +196,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B978000602A2CD5A5269D92F /* Pods_FabulousApp.framework in Frameworks */,
+				5BD203EA26661FF7005B3666 /* Pods_FabulousApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +485,7 @@
 		5B4898A226520E780042BBEA /* 直播 */ = {
 			isa = PBXGroup;
 			children = (
+				5BF1FF612664C1E2003C53FC /* TextTableVC */,
 				5B4898A326520E8D0042BBEA /* LiveVC.swift */,
 				5B4898A52652108D0042BBEA /* CarvedSelectView.swift */,
 				5B4898A02652017D0042BBEA /* CarvedLabel.swift */,
@@ -548,6 +570,16 @@
 			path = FabulousAppUITests;
 			sourceTree = "<group>";
 		};
+		5BF1FF612664C1E2003C53FC /* TextTableVC */ = {
+			isa = PBXGroup;
+			children = (
+				5BF1FF5F2664BF73003C53FC /* TextTableVC.swift */,
+				5BF1FF622664C1FD003C53FC /* FoldTextCell.swift */,
+				5BF1FF642664C4B9003C53FC /* TextModel.swift */,
+			);
+			path = TextTableVC;
+			sourceTree = "<group>";
+		};
 		D1B0458FD3EABA3AC2E84C63 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -573,6 +605,7 @@
 				5BA8F6FF2646234800AE46ED /* Frameworks */,
 				5BA8F7002646234800AE46ED /* Resources */,
 				30CD5DC7A9A9108AB8A2D468 /* [CP] Embed Pods Frameworks */,
+				5BD203EC26661FF7005B3666 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -810,11 +843,13 @@
 				5B1A6406264E4223006A31DF /* MineHeaderView.swift in Sources */,
 				5BC9A5D0264E6A8A00FE5709 /* MineNavBar.swift in Sources */,
 				5B03505E264630E40005ECFC /* ApplicationTool.swift in Sources */,
+				5BF1FF602664BF73003C53FC /* TextTableVC.swift in Sources */,
 				5B092C09264BCEFC0007AA56 /* PlazaSectionHeader.swift in Sources */,
 				5B03502F264630E40005ECFC /* BlankRequestModel.swift in Sources */,
 				5B03506B264630E40005ECFC /* CreateTool.swift in Sources */,
 				5B03505A264630E40005ECFC /* String.swift in Sources */,
 				5B32F2922648CCA600E4D367 /* MomentParaModel.swift in Sources */,
+				5BF1FF632664C1FD003C53FC /* FoldTextCell.swift in Sources */,
 				5BA8F7062646234800AE46ED /* AppDelegate.swift in Sources */,
 				5B03505C264630E40005ECFC /* UIViewController.swift in Sources */,
 				5B092BFF264BBAA30007AA56 /* PlazaCell_Type.swift in Sources */,
@@ -832,6 +867,7 @@
 				5B034FA0264630630005ECFC /* Constant.swift in Sources */,
 				5B0350772646381D0005ECFC /* MainVC.swift in Sources */,
 				5B42E0682649067700618BE6 /* MomentCell.swift in Sources */,
+				5BF1FF652664C4B9003C53FC /* TextModel.swift in Sources */,
 				5B035064264630E40005ECFC /* CacheTool.swift in Sources */,
 				5B035069264630E40005ECFC /* ValidateTool.swift in Sources */,
 				5B034FA1264630630005ECFC /* Store.swift in Sources */,

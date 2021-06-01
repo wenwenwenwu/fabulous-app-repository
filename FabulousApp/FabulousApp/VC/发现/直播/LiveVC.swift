@@ -77,7 +77,7 @@ class LiveVC: UIViewController, PageViewDelegate, SelectViewNewDelegate, SelectV
     //MARK: - Component
     lazy var searchView = SearchView()
     
-    lazy var pageView = PageView(ownerVC: self, pageVCArray: [ViewController(), ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController()])
+    lazy var pageView = PageView(ownerVC: self, pageVCArray: [TextTableVC(), ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController(),ViewController()])
     
     
     

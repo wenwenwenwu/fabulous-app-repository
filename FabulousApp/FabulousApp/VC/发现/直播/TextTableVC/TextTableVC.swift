@@ -64,6 +64,7 @@ class TextTableVC: UIViewController, PageVCDelegate, UITableViewDataSource, UITa
     
     
     //MARK: - FoldTextCellDelegate
+    //🐶
     func foldTextCellDidTapOpenClose(index: Int) {
         let newModel = dataArray[index]
         dataArray[index] = newModel

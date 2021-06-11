@@ -10,4 +10,5 @@
 
 #import "MBProgressHUD.h"
 #import "UINavigationController+FDFullscreenPopGesture.h"
+#import "YYText.h"
 #endif /* BridgingHeader_h */

@@ -6,18 +6,19 @@
 //
 
 import Foundation
+import YYText
 
 protocol FoldTextCellDelegate: AnyObject {
-    func foldTextCellDidTapOpenClose(index: Int)
+    func foldTextCellDidTapOpenClose(toOpen: Bool, index: Int)
 }
 
-class FoldTextCell: UITableViewCell, UITextViewDelegate {
+class FoldTextCell: UITableViewCell {
     
     //MARK: - LifeCycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = UIColor.white
-        contentView.addSubview(textView)
+        contentView.addSubview(foldLabel)
     }
     
     required init?(coder: NSCoder) {
@@ -26,72 +27,46 @@ class FoldTextCell: UITableViewCell, UITextViewDelegate {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        textView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: rem(0), left: rem(20), bottom: rem(20), right: rem(20)))
+        foldLabel.snp.makeConstraints { (make) in
+            make.top.top.equalTo(rem(20))
+            make.left.equalTo(rem(20))
+            make.right.equalTo(rem(-20))
+            make.bottom.equalTo(rem(-20))
         }
     }
-    
-    //MARK: - UITextViewDelegate
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        if URL.scheme == "didOpenClose" {
-            guard let delegate = delegate else { return false }
-            print("可以")
-            delegate.foldTextCellDidTapOpenClose(index: index)
-        }
-        return true
-    }
-    
-    //MARK: - Action
-    
-    
-    
+
     //MARK: - Setup
     func setupText(model: TextModel, index: Int) {
         var suffixStr = ""
         var contentStr = model.text
-        var height = model.actualHeight
         if model.actualHeight > model.foldHeight {
             if model.isOpen {
                 suffixStr = TextModel.foldStr
                 contentStr += suffixStr
-                height = model.actualHeight
             } else {
                 suffixStr = TextModel.openStr
                 contentStr = truncateStr(str: contentStr, suffixStr: suffixStr)
-                height = model.foldHeight
             }
         }
         let attStr = NSMutableAttributedString(string: contentStr, attributes: TextModel.attributes)
-//        var linkTextAttributes:[NSAttributedString.Key:Any]
         if !suffixStr.isEmpty {
-            let range3 = NSString.init(string: contentStr).range(of: suffixStr)
-            attStr.addAttribute(.foregroundColor, value: UIColor.systemBlue, range: range3)
+            let suffixRange = NSString.init(string: contentStr).range(of: suffixStr)
+            attStr.addAttribute(.foregroundColor, value: UIColor.systemBlue, range: suffixRange)
+            attStr.yy_setTextHighlight(suffixRange, color: .systemBlue, backgroundColor: nil) { [unowned self] _, _, _, _ in
+                delegate?.foldTextCellDidTapOpenClose(toOpen: !model.isOpen, index: index)
+            }
 
-            let charSet = NSMutableCharacterSet()
-            charSet.formUnion(with: CharacterSet.urlQueryAllowed)
-            charSet.addCharacters(in: "#")
-            let linkStr = "didOpenClose://".addingPercentEncoding(withAllowedCharacters: charSet as CharacterSet)!
-            attStr.addAttribute(.link, value: "didOpenClose://", range: range3)
-//            let linkStr = "didOpenClose://\(suffixStr)".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlFragmentAllowed)!
-//            attStr.addAttribute(.link, value: linkStr, range: range3)
-            
         }
-        textView.attributedText = attStr
         
-        
-        
-        
-        
+        foldLabel.attributedText = attStr
         
     }
-    
-    
     
     //MARK: - Method
     func truncateStr(str: String, suffixStr: String) -> String {
         let strCount = str.count
         let suffixCount = suffixStr.count
-        for item in stride(from: strCount, to: 0, by: -suffixCount) {
+        for item in stride(from: strCount - suffixCount, to: 0, by: -suffixCount) {
             let lastIndex = str.index(str.startIndex, offsetBy: item)
             var tempStr = String(str[..<lastIndex])
             let tempStrSize = tempStr.sizeWithAttributes(attributes: TextModel.attributes)
@@ -107,7 +82,12 @@ class FoldTextCell: UITableViewCell, UITextViewDelegate {
     }
     
     //MARK: - Component
-    lazy var textView = CreateTool.textViewWith(backGroundColor: UIColor.yellow, delegate: self)
+    lazy var foldLabel: YYLabel = {
+        let label = YYLabel()
+        label.backgroundColor = UIColor.systemGreen
+        label.numberOfLines = 0
+        return label
+    }()
     
     weak var delegate: FoldTextCellDelegate?
     

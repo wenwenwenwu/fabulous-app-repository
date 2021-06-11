@@ -9,23 +9,11 @@ import Foundation
 
 class TextTableVC: UIViewController, PageVCDelegate, UITableViewDataSource, UITableViewDelegate, FoldTextCellDelegate {
     
-    //MARK: - LifeCycle
-    init() {
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = WHITE_FFFFFF
         view.addSubview(tableView)
     }
-    
-    
-    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -49,27 +37,28 @@ class TextTableVC: UIViewController, PageVCDelegate, UITableViewDataSource, UITa
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let model = dataArray[indexPath.row]
-        print("\(model.actualHeight),\(model.foldHeight)")
-        let otherHeight = rem(100)
         if model.actualHeight > model.foldHeight {
             if model.isOpen {
-                return model.actualHeight + otherHeight
+                return model.actualHeight + rem(40)
             } else {
-                return model.foldHeight + otherHeight
+                return model.foldHeight + rem(40)
             }
         } else {
-            return model.actualHeight + otherHeight
+            return model.actualHeight + rem(40)
         }
     }
     
     
     //MARK: - FoldTextCellDelegate
-    func foldTextCellDidTapOpenClose(index: Int) {
-        let newModel = dataArray[index]
+    func foldTextCellDidTapOpenClose(toOpen: Bool, index: Int) {
+        print("toOpen:\(toOpen),index:\(index)")
+        var newModel = dataArray[index]
+        newModel.isOpen = toOpen
         dataArray[index] = newModel
         let selectedIndexPath = IndexPath(row: index, section: 0)
         tableView.reloadRows(at: [selectedIndexPath], with: .automatic)
     }
+    
     
     //MARK: - Component
     lazy var tableView: UITableView = {
@@ -79,7 +68,7 @@ class TextTableVC: UIViewController, PageVCDelegate, UITableViewDataSource, UITa
     }()
     
     //MARK: - Data
-    lazy var dataArray = [TextModel(text: "天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨")]
+    lazy var dataArray = [TextModel(text: "天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨"),TextModel(text: "天青色等烟雨天"),TextModel(text: "天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨"),TextModel(text: "天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨"),TextModel(text: "天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等")]
     
     
 }

@@ -9,7 +9,7 @@ import Foundation
 
 struct TextModel: Codable {
     
-    init(text: String, isOpen: Bool = true) {
+    init(text: String, isOpen: Bool = false) {
         self.text = text
         self.isOpen = isOpen
     }
@@ -20,17 +20,19 @@ struct TextModel: Codable {
     
     var actualHeight: CGFloat {
         guard !text.isEmpty else { return rem(0) }
-        let actualHeight = text.heightWithStringAttributes(attributes: TextModel.attributes, fixedWidth: TextModel.width)
+        let actualHeight = text.sizeWithAttributes(attributes: TextModel.attributes, fixedWidth: TextModel.textWidth).height
         return actualHeight
     }
     
-    var foldHeight: CGFloat { //五行的高度
+    var foldHeight: CGFloat { 
         guard !text.isEmpty else { return rem(0) }
-        let foldHeight = "一行文字".heightWithStringAttributes(attributes: TextModel.attributes, fixedWidth: TextModel.width)  * TextModel.foldRowCount
+        let foldRowHeight = "一行文字".sizeWithAttributes(attributes: TextModel.attributes, fixedWidth: TextModel.textWidth).height
+        let foldHeight = foldRowHeight  * TextModel.foldRowCount
         return foldHeight
     }
     
-    static let width = SCREEN_WIDTH - rem(40)
+    //label的宽度为SCREEN_WIDTH - rem(40),但是label的文字还有默认的缩进rem(5)
+    static let textWidth = SCREEN_WIDTH - rem(40) - rem(5)
     
     static let foldRowCount: CGFloat = 5
     

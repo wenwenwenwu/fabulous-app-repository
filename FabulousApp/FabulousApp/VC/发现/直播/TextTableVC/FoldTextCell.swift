@@ -29,8 +29,8 @@ class FoldTextCell: UITableViewCell {
         super.layoutSubviews()
         foldLabel.snp.makeConstraints { (make) in
             make.top.top.equalTo(rem(20))
-            make.left.equalTo(rem(20))
-            make.right.equalTo(rem(-20))
+            make.left.equalTo(rem(20)) //左边距
+            make.right.equalTo(rem(-20)) //右边距
             make.bottom.equalTo(rem(-20))
         }
     }
@@ -51,7 +51,6 @@ class FoldTextCell: UITableViewCell {
         let attStr = NSMutableAttributedString(string: contentStr, attributes: TextModel.attributes)
         if !suffixStr.isEmpty {
             let suffixRange = NSString.init(string: contentStr).range(of: suffixStr)
-            attStr.addAttribute(.foregroundColor, value: UIColor.systemBlue, range: suffixRange)
             attStr.yy_setTextHighlight(suffixRange, color: .systemBlue, backgroundColor: nil) { [unowned self] _, _, _, _ in
                 delegate?.foldTextCellDidTapOpenClose(toOpen: !model.isOpen, index: index)
             }
@@ -68,12 +67,13 @@ class FoldTextCell: UITableViewCell {
         let suffixCount = suffixStr.count
         for item in stride(from: strCount - suffixCount, to: 0, by: -suffixCount) {
             let lastIndex = str.index(str.startIndex, offsetBy: item)
-            var tempStr = String(str[..<lastIndex])
+            var tempStr = String(str[...lastIndex])
             let tempStrSize = tempStr.sizeWithAttributes(attributes: TextModel.attributes)
-            if tempStrSize.width < TextModel.foldRowCount * TextModel.width {
+            if tempStrSize.width < TextModel.foldRowCount * TextModel.textWidth {
                 tempStr += suffixStr
+                print(tempStr)
                 let tempStrWithSuffixSize = tempStr.sizeWithAttributes(attributes: TextModel.attributes )
-                if tempStrWithSuffixSize.width < TextModel.foldRowCount * TextModel.width {
+                if tempStrWithSuffixSize.width < TextModel.foldRowCount * TextModel.textWidth {
                     return tempStr
                 }
             }
@@ -96,13 +96,4 @@ class FoldTextCell: UITableViewCell {
     
 }
 
-extension String {
-    
-    func sizeWithAttributes(attributes : [NSAttributedString.Key : Any]) -> CGSize {
-        guard count > 0 else { return .zero }
-        let size = CGSize.init(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
-        let rect = self.boundingRect(with: size, options:[.usesLineFragmentOrigin], attributes: attributes, context:nil)
-        return rect.size
-    }
-    
-}
+

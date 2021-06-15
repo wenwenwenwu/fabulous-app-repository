@@ -37,21 +37,21 @@ class TextTableVC: UIViewController, PageVCDelegate, UITableViewDataSource, UITa
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let model = dataArray[indexPath.row]
+        let otherHeight = rem(40)
         if model.actualHeight > model.foldHeight {
             if model.isOpen {
-                return model.actualHeight + rem(40)
+                return model.actualHeight + otherHeight
             } else {
-                return model.foldHeight + rem(40)
+                return model.foldHeight + otherHeight
             }
         } else {
-            return model.actualHeight + rem(40)
+            return model.actualHeight + otherHeight
         }
     }
     
     
     //MARK: - FoldTextCellDelegate
     func foldTextCellDidTapOpenClose(toOpen: Bool, index: Int) {
-        print("toOpen:\(toOpen),index:\(index)")
         var newModel = dataArray[index]
         newModel.isOpen = toOpen
         dataArray[index] = newModel
@@ -68,7 +68,7 @@ class TextTableVC: UIViewController, PageVCDelegate, UITableViewDataSource, UITa
     }()
     
     //MARK: - Data
-    lazy var dataArray = [TextModel(text: "天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨"),TextModel(text: "天青色等烟雨天"),TextModel(text: "天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨"),TextModel(text: "天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨"),TextModel(text: "天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等")]
+    lazy var dataArray = [TextModel(text: "天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨"),TextModel(text: "天青色等烟雨天"),TextModel(text: "天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨"),TextModel(text: "天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨"),TextModel(text: "天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等烟雨天青色等")]
     
     
 }
